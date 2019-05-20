@@ -2,47 +2,97 @@
     display: flex
     flex-direction: column
     justify-content: space-between
-    padding-left: 140px
-    padding-top: 76px
+    padding: 76px 0 112px 140px
     height: 100vh
     background: no-repeat url(../img/page1/bg.jpg) center / cover
 
 
-.menu
-    display: flex
-    &__btn
-        height: 14px
-        width: 19px
-        margin-top: 1px
-        margin-right: 11px
-        position: relative
-        span
-            display: block
-            position: absolute
-            height: 2px
-            width: 100%
-            background-color: #282830
-
-            &:before
+.page1
+    &-menu
+        display: flex
+        width: 100px
+        cursor: pointer
+        &__btn
+            height: 14px
+            width: 19px
+            margin-right: 11px
+            position: relative
+            span
                 top: 6px
-                position: absolute
-                content: ''
                 display: block
-                width: 100%
+                position: absolute
                 height: 2px
+                width: 100%
                 background-color: #282830
+
+                &:before
+                    top: -6px
+                    position: absolute
+                    content: ''
+                    display: block
+                    width: 100%
+                    height: 2px
+                    background-color: #282830
+                
+                &:after
+                    top: 6px
+                    position: absolute
+                    content: ''
+                    display: block
+                    width: 100%
+                    height: 2px
+                    background-color: #282830
+        &__text
+            color: #282830
+            text-transform: uppercase
+            font-size: 14px
+            font-weight: 700
+        
+    &-main
+        width: 560px
+        &__title, &__subtitle
+            font-weight: 700
+            text-transform: uppercase
+
+        &__title
+            color: #282830
+            font-size: 54px
             
-            &:after
-                top: 12px
-                position: absolute
-                content: ''
-                display: block
-                width: 100%
-                height: 2px
-                background-color: #282830
-    &__text
-        color: #282830
-        text-transform: uppercase
-        font-size: 14px
-        font-weight: 700
+        
+        &__subtitle
+            margin-bottom: 45px
+            color: #000000
+            font-family: Muller
+            font-size: 16px
+    
+    &-numbers
+        display: flex
+        width: 420px
+        align-items: center
+        justify-content: space-between
+        
+        &__signs, &__photos, &__members
+            color: #282830
+            font-size: 48px
+            font-weight: 700
+
+        &__text
+            display: block
+            color: #282830
+            font-family: Muller
+            font-size: 14px
+            font-weight: 700
+    
+    &-btn
+        &__link
+            display: flex
+            align-items: center
+            color: #282830
+
+        &__icon
+            margin-right: 18px
+        
+
+        
+
         

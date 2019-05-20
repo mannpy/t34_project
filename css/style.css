@@ -136,27 +136,28 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-left: 140px;
-  padding-top: 76px;
+  padding: 76px 0 112px 140px;
   height: 100vh;
   background: no-repeat url(../img/page1/bg.jpg) center/cover;
 }
 
-.menu {
+.page1-menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100px;
+  cursor: pointer;
 }
 
-.menu__btn {
+.page1-menu__btn {
   height: 14px;
   width: 19px;
-  margin-top: 1px;
   margin-right: 11px;
   position: relative;
 }
 
-.menu__btn span {
+.page1-menu__btn span {
+  top: 6px;
   display: block;
   position: absolute;
   height: 2px;
@@ -164,7 +165,17 @@ a {
   background-color: #282830;
 }
 
-.menu__btn span:before {
+.page1-menu__btn span:before {
+  top: -6px;
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #282830;
+}
+
+.page1-menu__btn span:after {
   top: 6px;
   position: absolute;
   content: '';
@@ -174,20 +185,72 @@ a {
   background-color: #282830;
 }
 
-.menu__btn span:after {
-  top: 12px;
-  position: absolute;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #282830;
-}
-
-.menu__text {
+.page1-menu__text {
   color: #282830;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 700;
+}
+
+.page1-main {
+  width: 560px;
+}
+
+.page1-main__title, .page1-main__subtitle {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.page1-main__title {
+  color: #282830;
+  font-size: 54px;
+}
+
+.page1-main__subtitle {
+  margin-bottom: 45px;
+  color: #000000;
+  font-family: Muller;
+  font-size: 16px;
+}
+
+.page1-numbers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 420px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.page1-numbers__signs, .page1-numbers__photos, .page1-numbers__members {
+  color: #282830;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.page1-numbers__text {
+  display: block;
+  color: #282830;
+  font-family: Muller;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.page1-btn__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #282830;
+}
+
+.page1-btn__icon {
+  margin-right: 18px;
 }
 /*# sourceMappingURL=style.css.map */
