@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+=font-face($family, $path, $weight: normal, $style: normal)
+  @font-face
+    font-family: $family
+    src: url('#{$path}.eot')
+    src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype')
+    font-weight: $weight
+    font-style: $style
+
++font-face('Muller', '../fonts/MullerBold/MullerBold', bold)
++font-face('Muller', '../fonts/MullerMedium/MullerMedium', 500)
++font-face('Muller', '../fonts/MullerRegular/MullerRegular')
++font-face('NewBaskervilleC', '../fonts/NewBaskervilleC-Bold/NewBaskervilleC-Bold', bold)

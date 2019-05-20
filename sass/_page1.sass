@@ -1,0 +1,48 @@
+#page1
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding-left: 140px
+    padding-top: 76px
+    height: 100vh
+    background: no-repeat url(../img/page1/bg.jpg) center / cover
+
+
+.menu
+    display: flex
+    &__btn
+        height: 14px
+        width: 19px
+        margin-top: 1px
+        margin-right: 11px
+        position: relative
+        span
+            display: block
+            position: absolute
+            height: 2px
+            width: 100%
+            background-color: #282830
+
+            &:before
+                top: 6px
+                position: absolute
+                content: ''
+                display: block
+                width: 100%
+                height: 2px
+                background-color: #282830
+            
+            &:after
+                top: 12px
+                position: absolute
+                content: ''
+                display: block
+                width: 100%
+                height: 2px
+                background-color: #282830
+    &__text
+        color: #282830
+        text-transform: uppercase
+        font-size: 14px
+        font-weight: 700
+        
