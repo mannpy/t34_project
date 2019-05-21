@@ -10,11 +10,11 @@
 <body>
 
     <section id="page1" class="page1">
-        <div class="page1__menu page1-menu">
-            <div class="page1-menu__btn"><span></span></div>
-            <div class="page1-menu__text">меню</div>
+        <div class="page1__menu menu">
+            <div class="menu__btn"><span></span></div>
+            <div class="menu__text">меню</div>
         </div>
-        <!-- /.page1-menu -->
+        <!-- /.menu -->
 
         <div class="page1__main page1-main">
             <div class="page1-main__title">
@@ -58,9 +58,9 @@
     <!-- /#page1 -->
     
     <section id="page2" class="page2">
-        <div class="page2__menu page2-menu">
-            <div class="page1-menu__btn page2-menu__btn"><span></span></div>
-            <div class="page2-menu__text">закрыть</div>
+        <div class="page2__menu menu">
+            <div class="menu__btn menu__btn_active"><span></span></div>
+            <div class="menu__text menu__text_active">закрыть</div>
         </div>
         <div class="page2__blocks page2-blocks">
             <div class="page2-blocks__block">ГЛАВНАЯ</div>
@@ -69,41 +69,59 @@
             <div class="page2-blocks__block">КАРТА</div>
             <div class="page2-blocks__block page2-about">
                 <div class="page2-about__title">О проекте</div>
-                <div class="page2-about__text">Задача организации, в особенности же консультация
+                <div class="page2-about__text"><p>Задача организации, в особенности же консультация
                     с широким активом играет важную роль в формировании существенных финансовых и административных условий. 
                     С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет 
-                    оценить значение соответствующий условий активизации. Значимость этих проблем настолько очевидна,
+                    оценить значение соответствующий условий активизации.</p><br><p>Значимость этих проблем настолько очевидна,
                     что укрепление и развитие структуры способствует подготовки и реализации модели развития. 
                     Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности позволяет оценить 
                     значение систем массового участия. Разнообразный и богатый опыт начало повседневной работы 
                     по формированию позиции способствует подготовки и реализации направлений прогрессивного развития.
                     С другой стороны начало повседневной работы по формированию позиции играет важную роль в 
                     формировании направлений прогрессивного развития. С другой стороны реализация намеченных плановых
-                    заданий требуют определения и уточнения форм развития.
+                    заданий требуют определения и уточнения форм развития.</p>
                 </div>
 
-                <div class="page2-about__numbers page2-numbers">
-                    <div class="page1-numbers__signs">
+                <div class="page2-about__numbers page1-numbers page2-numbers">
+                    <div class="page1-numbers__signs page2-numbers__signs">
                         1524
-                        <span class="page1-numbers__text">памятных знака</span>
+                        <span class="page1-numbers__text page2-numbers__text">памятных знака</span>
                     </div>
     
-                    <div class="page1-numbers__photos">
+                    <div class="page1-numbers__photos page2-numbers__photos">
                         1256
-                        <span class="page1-numbers__text">фотографии</span>
+                        <span class="page1-numbers__text page2-numbers__text">фотографии</span>
                     </div>
     
-                    <div class="page1-numbers__members">
+                    <div class="page1-numbers__members page2-numbers__members">
                         155
-                        <span class="page1-numbers__text">участники</span>
+                        <span class="page1-numbers__text page2-numbers__text">участники</span>
                     </div>
     
+                </div>
+
+                <div class="page2-icons">
+                    <div class="page2-icons__img"><img src="img/page2/eagle.png" alt="Eagle"></div>
+                    <div class="page2-icons__img"><img src="img/page2/era.png" alt="Era"></div>
                 </div>
 
             </div>
         </div>
     </section>
     <!-- /#page2 -->
+
+    <section id="page3" class="page3">
+        <div class="page3__menu menu menu_dark-bg">
+            <div class="menu__btn menu__btn_dark-bg"><span></span></div>
+            <div class="menu__text menu__text_dark-bg">меню</div>
+            <div class="menu__descr">Карта</div>
+        </div>
+        <div class="page3__info page3-info">
+            <div class="page3-numbers"></div>
+            <div class="page3-info__btn"></div>
+        </div>
+    </section>
+    <!-- /#page3.page3 -->
 
 
 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>

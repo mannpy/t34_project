@@ -1,49 +1,17 @@
 .page1
+    position: relative
     display: flex
     flex-direction: column
-    justify-content: space-between
+    justify-content: center
     padding: 76px 0 112px 140px
     height: 100vh
     background: no-repeat url(../img/page1/bg.jpg) center / cover
 
 
 .page1
-    &-menu
-        display: flex
-        width: 100px
-        cursor: pointer
-        &__btn
-            height: 14px
-            width: 19px
-            margin-right: 11px
-            position: relative
-            span
-                top: 6px
-                
-                &, &:before, &:after
-                    display: block
-                    height: 2px
-                    width: 100%
-                    position: absolute
-                    background-color: $active        
-
-                &:before, &:after
-                    content: ''
-
-                &:before
-                    top: -6px
-                &:after
-                    top: 6px
-
-
-        &__text
-            color: $active
-            text-transform: uppercase
-            font-size: 14px
-            font-weight: 700
-
-        
+           
     &-main
+        margin-top: 134px
         width: 560px
         &__title, &__subtitle
             font-weight: 700
@@ -65,6 +33,7 @@
         width: 420px
         align-items: center
         justify-content: space-between
+        text-align: center
         
         &__signs, &__photos, &__members
             color: $active
@@ -78,16 +47,20 @@
             font-size: 14px
             font-weight: 700
     
+    &-btn
+        position: absolute
+        bottom: 112px
+        width: 300px
+        
     &-btn, &-btn__link
-        width: 180px
+        
         color: $active
         fill: $active
 
         &__link
             display: flex
             align-items: center
-            
-
+        
         &__icon
             margin-right: 18px
         

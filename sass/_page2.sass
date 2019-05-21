@@ -1,33 +1,9 @@
 .page2
-    display: none
     height: 100vh
     position: relative
     background-color: $active
     color: #ffffff
-    
-    &-menu
-        display: flex
-        position: absolute
-        top: 100px
-        left: 143px
-        cursor: pointer
-        &__btn
-            span
-                background-color: transparent
-                &:before, &:after
-                    background-color: #fff
-                
-                &:before
-                    top: 0
-                    transform: rotate(-45deg)
-                
-                &:after
-                    top: 0
-                    transform: rotate(45deg)
-        
-        &__text
-            text-transform: uppercase
-    
+
     &-blocks
         height: 100%
         width: 100%
@@ -48,3 +24,55 @@
             
             &:hover
                 background-color: #36363d
+
+    &-about
+        flex: 1.5
+        flex-direction: column
+        justify-content: center
+        align-items: flex-start
+        padding-right: 81px
+        padding-left: 4%
+
+        &__title
+            margin-bottom: 76px
+            font-size: 28px
+            font-weight: 700
+            position: relative
+
+            &:after
+                top: 60px
+                position: absolute
+                content: ''
+                display: block
+                width: 100%
+                height: 4px
+                background-color: #fff
+        
+        &__text
+            max-width: 400px
+            margin-bottom: 100px
+            font-family: Muller
+            font-size: 14px
+            font-weight: 400
+            color: #8a8a8a
+    
+    &-numbers
+        margin-bottom: 100px
+
+        &__signs, &__photos, &__members
+            color: #ffffff
+            font-size: 24px
+        
+        &__text
+            color: #6b6b6b
+            font-size: 12px
+            font-weight: 500
+    
+    &-icons
+        display: flex
+
+        &__img
+            &:first-child
+                margin-right: 34px
+            
+    
