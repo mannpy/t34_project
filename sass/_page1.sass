@@ -1,4 +1,4 @@
-#page1
+.page1
     display: flex
     flex-direction: column
     justify-content: space-between
@@ -19,34 +19,29 @@
             position: relative
             span
                 top: 6px
-                display: block
-                position: absolute
-                height: 2px
-                width: 100%
-                background-color: #282830
+                
+                &, &:before, &:after
+                    display: block
+                    height: 2px
+                    width: 100%
+                    position: absolute
+                    background-color: $active        
+
+                &:before, &:after
+                    content: ''
 
                 &:before
                     top: -6px
-                    position: absolute
-                    content: ''
-                    display: block
-                    width: 100%
-                    height: 2px
-                    background-color: #282830
-                
                 &:after
                     top: 6px
-                    position: absolute
-                    content: ''
-                    display: block
-                    width: 100%
-                    height: 2px
-                    background-color: #282830
+
+
         &__text
-            color: #282830
+            color: $active
             text-transform: uppercase
             font-size: 14px
             font-weight: 700
+
         
     &-main
         width: 560px
@@ -55,7 +50,7 @@
             text-transform: uppercase
 
         &__title
-            color: #282830
+            color: $active
             font-size: 54px
             
         
@@ -72,25 +67,34 @@
         justify-content: space-between
         
         &__signs, &__photos, &__members
-            color: #282830
+            color: $active
             font-size: 48px
             font-weight: 700
 
         &__text
             display: block
-            color: #282830
+            color: $active
             font-family: Muller
             font-size: 14px
             font-weight: 700
     
-    &-btn
+    &-btn, &-btn__link
+        width: 180px
+        color: $active
+        fill: $active
+
         &__link
             display: flex
             align-items: center
-            color: #282830
+            
 
         &__icon
             margin-right: 18px
+        
+        &:hover, &:hover &__link
+            color: lighten($active, 20)
+            fill: lighten($active, 50)
+            
         
 
         

@@ -55,19 +55,17 @@ button, input, textarea {
   font-family: Muller, sans-serif;
 }
 
-button:active, button:focus, button:hover {
+button:active, button:hover, button:focus, input:active, input:hover, input:focus, textarea:active, textarea:hover, textarea:focus {
   outline: 0;
   outline-offset: 0;
 }
 
-input:active, input:focus, input:hover {
-  outline: 0;
-  outline-offset: 0;
+a, a:visited, a:focus, a:active, a:hover {
+  outline: 0 none !important;
 }
 
-textarea:active, textarea:focus, textarea:hover {
-  outline: 0;
-  outline-offset: 0;
+::-moz-focus-inner {
+  border: 0;
 }
 
 input:invalid, input:-moz-submit-invalid, input:-moz-ui-invalid {
@@ -125,7 +123,7 @@ a {
   margin-left: -15px;
 }
 
-#page1 {
+.page1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -158,31 +156,26 @@ a {
 
 .page1-menu__btn span {
   top: 6px;
+}
+
+.page1-menu__btn span, .page1-menu__btn span:before, .page1-menu__btn span:after {
   display: block;
-  position: absolute;
   height: 2px;
   width: 100%;
+  position: absolute;
   background-color: #282830;
+}
+
+.page1-menu__btn span:before, .page1-menu__btn span:after {
+  content: '';
 }
 
 .page1-menu__btn span:before {
   top: -6px;
-  position: absolute;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #282830;
 }
 
 .page1-menu__btn span:after {
   top: 6px;
-  position: absolute;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #282830;
 }
 
 .page1-menu__text {
@@ -240,17 +233,107 @@ a {
   font-weight: 700;
 }
 
-.page1-btn__link {
+.page1-btn, .page1-btn__link {
+  width: 180px;
+  color: #282830;
+  fill: #282830;
+}
+
+.page1-btn__link, .page1-btn__link__link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #282830;
 }
 
-.page1-btn__icon {
+.page1-btn__icon, .page1-btn__link__icon {
   margin-right: 18px;
+}
+
+.page1-btn:hover, .page1-btn:hover .page1-btn__link, .page1-btn__link:hover, .page1-btn__link:hover .page1-btn__link, .page1-btn:hover .page1-btn__link__link, .page1-btn__link:hover .page1-btn__link__link {
+  color: #565668;
+  fill: #a4a4b3;
+}
+
+.page2 {
+  display: none;
+  height: 100vh;
+  position: relative;
+  background-color: #282830;
+  color: #ffffff;
+}
+
+.page2-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 100px;
+  left: 143px;
+  cursor: pointer;
+}
+
+.page2-menu__btn span {
+  background-color: transparent;
+}
+
+.page2-menu__btn span:before, .page2-menu__btn span:after {
+  background-color: #fff;
+}
+
+.page2-menu__btn span:before {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.page2-menu__btn span:after {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.page2-menu__text {
+  text-transform: uppercase;
+}
+
+.page2-blocks {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page2-blocks__block {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #515151;
+  -webkit-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+
+.page2-blocks__block:first-child {
+  border-left: none;
+}
+
+.page2-blocks__block:last-child {
+  border-right: none;
+}
+
+.page2-blocks__block:hover {
+  background-color: #36363d;
 }
 /*# sourceMappingURL=style.css.map */

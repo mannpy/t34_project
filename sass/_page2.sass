@@ -1,0 +1,50 @@
+.page2
+    display: none
+    height: 100vh
+    position: relative
+    background-color: $active
+    color: #ffffff
+    
+    &-menu
+        display: flex
+        position: absolute
+        top: 100px
+        left: 143px
+        cursor: pointer
+        &__btn
+            span
+                background-color: transparent
+                &:before, &:after
+                    background-color: #fff
+                
+                &:before
+                    top: 0
+                    transform: rotate(-45deg)
+                
+                &:after
+                    top: 0
+                    transform: rotate(45deg)
+        
+        &__text
+            text-transform: uppercase
+    
+    &-blocks
+        height: 100%
+        width: 100%
+        display: flex
+
+        &__block
+            flex: 1
+            display: flex
+            justify-content: center
+            align-items: center
+            border: 1px solid #515151
+            transition: background-color 1s ease
+
+            &:first-child
+                border-left: none
+            &:last-child
+                border-right: none
+            
+            &:hover
+                background-color: #36363d
