@@ -168,6 +168,76 @@ a {
   border-left: 2px solid #a1a1a1;
 }
 
+.numbers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 420px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+
+.numbers__signs, .numbers__photos, .numbers__members {
+  color: #282830;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.numbers__signs_small, .numbers__photos_small, .numbers__members_small {
+  font-size: 24px;
+}
+
+.numbers__text {
+  display: block;
+  color: #282830;
+  font-family: Muller;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.numbers__text_small {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.numbers_dark-bg > .numbers__signs, .numbers_dark-bg > .numbers__photos, .numbers_dark-bg > .numbers__members {
+  color: #ffffff;
+}
+
+.numbers_dark-bg .numbers__text {
+  color: #6b6b6b;
+}
+
+.btn {
+  padding: 12px 18px;
+  background-color: transparent;
+  border-radius: 22px;
+  border: 1px solid #282830;
+  color: #282830;
+  font-family: Muller;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn:hover, .btn:active {
+  background-color: #282830;
+  color: #fff;
+}
+
+.btn_dark-bg {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn_dark-bg:hover, .btn_dark-bg:active {
+  background-color: rgba(207, 216, 220, 0.1);
+}
+
 .page1 {
   position: relative;
   display: -webkit-box;
@@ -205,34 +275,6 @@ a {
   color: #000000;
   font-family: Muller;
   font-size: 16px;
-}
-
-.page1-numbers {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 420px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-align: center;
-}
-
-.page1-numbers__signs, .page1-numbers__photos, .page1-numbers__members {
-  color: #282830;
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.page1-numbers__text {
-  display: block;
-  color: #282830;
-  font-family: Muller;
-  font-size: 14px;
-  font-weight: 700;
 }
 
 .page1-btn {
@@ -323,7 +365,7 @@ a {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding-right: 81px;
+  padding-right: 80px;
   padding-left: 4%;
 }
 
@@ -353,19 +395,9 @@ a {
   color: #8a8a8a;
 }
 
-.page2-numbers {
+.page2-about__numbers {
   margin-bottom: 100px;
-}
-
-.page2-numbers__signs, .page2-numbers__photos, .page2-numbers__members {
-  color: #ffffff;
-  font-size: 24px;
-}
-
-.page2-numbers__text {
-  color: #6b6b6b;
-  font-size: 12px;
-  font-weight: 500;
+  width: 300px;
 }
 
 .page2-icons {
@@ -383,5 +415,70 @@ a {
   background-color: #282830;
   color: #ffffff;
   position: relative;
+}
+
+.page3-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 140px;
+  top: 82px;
+}
+
+.page3-info__btn {
+  margin-left: 42px;
+}
+
+.page3__numbers {
+  width: 300px;
+}
+
+.page3__russia {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page3__russia svg {
+  width: 80%;
+  height: 60%;
+}
+
+.page3__russia svg .place {
+  fill: rgba(0, 0, 0, 0);
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.page3__russia svg .place:hover {
+  fill: #fff;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.page3__region {
+  position: absolute;
+  bottom: 105px;
+  left: 141px;
+}
+
+.page3__region .numbers {
+  text-align: left;
+  width: 400px;
+}
+
+.page3-region__title {
+  margin-bottom: 48px;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */

@@ -65,3 +65,64 @@
         padding-left: 24px
         color: #a1a1a1
         border-left: 2px solid #a1a1a1
+    
+
+
+// Numbers
+
+.numbers
+    display: flex
+    width: 420px
+    align-items: center
+    justify-content: space-between
+    text-align: center
+    
+    &__signs, &__photos, &__members
+        color: $active
+        font-size: 48px
+        font-weight: 700
+
+        &_small
+            font-size: 24px
+
+    &__text
+        display: block
+        color: $active
+        font-family: Muller
+        font-size: 14px
+        font-weight: 700
+
+        &_small
+            font-size: 12px
+            font-weight: 500
+    
+    &_dark-bg > &__signs, &_dark-bg > &__photos, &_dark-bg > &__members
+        color: #ffffff
+
+    &_dark-bg &__text
+        color: #6b6b6b
+
+// button
+.btn
+    padding: 12px 18px
+    background-color: transparent
+    border-radius: 22px
+    border: 1px solid #282830
+    color: #282830
+    font-family: Muller
+    font-size: 14px
+    font-weight: 700
+
+    &:hover, &:active
+        background-color: #282830
+        color: #fff
+    
+    &_dark-bg
+        border: 1px solid #ffffff
+        color: #ffffff
+
+        &:hover, &:active
+            background-color: rgba(#cfd8dc, .1)
+
+
+
