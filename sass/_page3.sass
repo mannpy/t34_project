@@ -3,16 +3,6 @@
     background-color: $active
     color: #ffffff
     position: relative
-
-
-    &-info
-        display: flex
-        position: absolute
-        right: 140px
-        top: 82px
-
-        &__btn
-            margin-left: 42px
     
     &__numbers
         width: 300px
@@ -29,7 +19,7 @@
             height: 60%
             .place
                 fill: rgba(#000, 0)
-                stroke: rgba(255, 255, 255, 0.3)
+                stroke: rgba(255, 255, 255, 0.7)
                 &:hover
                     fill: #fff
                     transition: all ease 0.3s
@@ -40,7 +30,6 @@
         left: 141px
 
         .numbers
-            text-align: left
             width: 400px
     
     &-region
@@ -49,4 +38,14 @@
             color: #ffffff
             font-size: 36px
             font-weight: 700
+            position: relative
+
+            &:after
+                position: absolute
+                display: block
+                top: 56px
+                content: ""
+                width: 90px
+                height: 1px
+                background-color: #fff
     

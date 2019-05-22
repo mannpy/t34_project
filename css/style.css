@@ -179,7 +179,6 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  text-align: center;
 }
 
 .numbers__signs, .numbers__photos, .numbers__members {
@@ -222,6 +221,7 @@ a {
   font-family: Muller;
   font-size: 14px;
   font-weight: 700;
+  line-height: 1;
 }
 
 .btn:hover, .btn:active {
@@ -236,6 +236,19 @@ a {
 
 .btn_dark-bg:hover, .btn_dark-bg:active {
   background-color: rgba(207, 216, 220, 0.1);
+}
+
+.header-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 140px;
+  top: 82px;
+}
+
+.header-info__btn {
+  margin-left: 42px;
 }
 
 .page1 {
@@ -417,19 +430,6 @@ a {
   position: relative;
 }
 
-.page3-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  right: 140px;
-  top: 82px;
-}
-
-.page3-info__btn {
-  margin-left: 42px;
-}
-
 .page3__numbers {
   width: 300px;
 }
@@ -455,7 +455,7 @@ a {
 
 .page3__russia svg .place {
   fill: rgba(0, 0, 0, 0);
-  stroke: rgba(255, 255, 255, 0.3);
+  stroke: rgba(255, 255, 255, 0.7);
 }
 
 .page3__russia svg .place:hover {
@@ -471,7 +471,6 @@ a {
 }
 
 .page3__region .numbers {
-  text-align: left;
   width: 400px;
 }
 
@@ -480,5 +479,32 @@ a {
   color: #ffffff;
   font-size: 36px;
   font-weight: 700;
+  position: relative;
+}
+
+.page3-region__title:after {
+  position: absolute;
+  display: block;
+  top: 56px;
+  content: "";
+  width: 90px;
+  height: 1px;
+  background-color: #fff;
+}
+
+.page4 {
+  height: 100vh;
+  position: relative;
+  padding-top: 152px;
+}
+
+.page4__numbers {
+  width: 300px;
+}
+
+.page4-slider__head {
+  background-color: #282830;
+  padding: 27px 52px 29px 141px;
+  width: 705px;
 }
 /*# sourceMappingURL=style.css.map */
