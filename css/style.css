@@ -699,4 +699,38 @@ a {
 .chars-view__img-block {
   margin-bottom: 100px;
 }
+
+.region-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.region-page__gallery {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  background-color: #282830;
+  font-family: Muller;
+  color: #787878;
+  padding-top: 50px;
+  padding-left: 40px;
+}
+
+.region-page__map {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+}
+
+.region-gallery__title {
+  margin-bottom: 7px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.region-gallery__subtitle {
+  margin-bottom: 40px;
+  font-size: 14px;
+}
 /*# sourceMappingURL=style.css.map */
