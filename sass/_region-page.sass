@@ -4,30 +4,47 @@
         height: 100vh
 
         &__gallery
-            flex-basis: 20%
+            flex-basis: 25%
             background-color: $active
-            font-family: Muller
+            padding: 50px 40px 0 40px
             color: #787878
-            padding-top: 50px
-            padding-left: 40px
-        
+            font-family: Muller
+            font-weight: 400
+            
         &__map
-            flex-basis: 80%
+            flex-basis: 75%
         
 
-    &-gallery
-        &__title
-            margin-bottom: 7px
-            color: #fff
-            font-size: 24px
-            font-weight: 700
+.gallery
+    &__title
+        margin-bottom: 7px
+        color: #fff
+        font-size: 24px
+        font-weight: 700
+    
+    &__subtitle
+        margin-bottom: 40px
+        font-size: 14px
+    
+    &__photos
+        max-width: 370px
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
         
-        &__subtitle
-            margin-bottom: 40px
-            font-size: 14px
-        
-        &__photos
-            display: flex
-            flex-wrap: wrap
+
+    &-block
+        margin-bottom: 20px
+        width: 170px
+
+        &:last-child
+            margin-bottom: 0
+
+        &__img
+            margin-bottom: 10px
+
+        &__name
+            font-size: 12px
+                
             
 
