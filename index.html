@@ -49,10 +49,10 @@
 
         <div class="main-page__btn main-page-btn">
             <a href="#" class="main-page-btn__link">
-                <div class="main-page-btn__icon">
+                <a class="main-page-btn__icon" href="#map-page">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><g><g><path d="M12.96 2.044c4.824 0 8.79 3.925 8.79 8.79v14.022c0 4.824-3.926 8.79-8.79 8.79h-2.126c-4.824 0-8.79-3.925-8.79-8.79V10.834c0-4.865 3.966-8.79 8.79-8.79zm10.833 22.812V10.834C23.793 4.864 18.928 0 12.96 0h-2.126C4.864 0 0 4.865 0 10.834v14.022C0 30.825 4.865 35.69 10.834 35.69h2.126c5.968 0 10.833-4.865 10.833-10.834z"/></g><g><path d="M16.966 18.928c-.368-.409-1.022-.409-1.43 0l-2.617 2.862V11.406c0-.572-.45-1.022-1.022-1.022-.573 0-1.022.45-1.022 1.022v10.425l-2.617-2.862c-.368-.409-1.022-.409-1.43 0a.995.995 0 0 0 0 1.308l4.333 4.783c.368.41 1.022.41 1.43 0l4.375-4.783c.327-.408.327-.98 0-1.349z"/></g></g></svg>
-                </div>
-                <div class="main-page-btn__text">Прокрутите вниз</div>
+                </a>
+                <a class="main-page-btn__link" href="#map-page">Прокрутите вниз</a>
             </a>
         </div>
         <!-- /.main-page-btn -->
@@ -66,7 +66,7 @@
         </div>
         <div class="menu-page__blocks menu-page-blocks">
             <div class="menu-page-blocks__block"><a href="#main-page" class="menu-page-blocks__link">главная</a></div>
-            <div class="menu-page-blocks__block"><a href="#" class="menu-page-blocks__link">устройство</a></div>
+            <div class="menu-page-blocks__block"><a href="#characteristics-page" class="menu-page-blocks__link">устройство</a></div>
             <div class="menu-page-blocks__block"><a href="#history-page" class="menu-page-blocks__link">история</a></div>
             <div class="menu-page-blocks__block"><a href="#map-page" class="menu-page-blocks__link">карта</a></div>
             <div class="menu-page-blocks__block menu-page-about">
@@ -238,6 +238,96 @@
         </div>
     </div>
     <!-- /#history-page.history-page -->
+
+    <div id="characteristics-page" class="characteristics-page">
+        <div class="characteristics-page__menu menu">
+            <div class="menu__btn"><span></span></div>
+            <div class="menu__text">меню</div>
+            <div class="menu__descr">Устройство танка</div>
+        </div>
+
+        <div class="characteristics-page__info header-info">
+            <div class="characteristics-page__numbers numbers">
+                <div class="numbers__signs numbers__signs numbers__signs_small">
+                    1524
+                    <span class="numbers__text numbers__text_small">памятных знака</span>
+                </div>
+
+                <div class="numbers__photos numbers__photos_small">
+                    1256
+                    <span class="numbers__text numbers__text_small">фотографии</span>
+                </div>
+
+                <div class="numbers__members numbers__members_small">
+                    155
+                    <span class="numbers__text numbers__text_small">участники</span>
+                </div>
+            </div>
+            <button class="header-info__btn btn">Добавить танк</button>
+        </div>
+
+        <div class="characteristics-page__chars-panel chars-panel">
+            <div class="chars-panel__title">Тактико-технические характеристики</div>
+            <div class="chars-panel__fields">
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Боевая масса</div>
+                    <div class="chars-field__text">32 тонны</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Размеры</div>
+                    <div class="chars-field__text">6100 х  3000 х 2720 мм</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Экипаж</div>
+                    <div class="chars-field__text">5 человек</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Вооружение</div>
+                    <div class="chars-field__text">1 х 85-мм пушка ЗИС-С-53 2 <br>7,62-мм пулемета ДТМ</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Боекомплект</div>
+                    <div class="chars-field__text">56 снарядов
+                    1920 патронов</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Бронирование корпуса</div>
+                    <div class="chars-field__text">90мм</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Бронирование бaшни</div>
+                    <div class="chars-field__text">90мм</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Тип двигателя</div>
+                    <div class="chars-field__text">дизель В-2-34М</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Максимальная мощность</div>
+                    <div class="chars-field__text">500 л.с.</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Максимальная скорость</div>
+                    <div class="chars-field__text">55 км/час</div>
+                </div>
+                <div class="chars-panel__field chars-field">
+                    <div class="chars-field__name">Запас хода</div>
+                    <div class="chars-field__text">350 км</div>
+                </div>
+            </div>
+        </div>
+        <div class="characteristics-page__view chars-view">
+            <div class="chars-view__img-block"><img src="img/characteristic-page/tank.png" alt="Tank" chars-view__img></div>
+            <div class="chars-view__btns">
+                <button class="btn">Сверху</button>
+                <button class="btn active">Справа</button>
+                <button class="btn">Слева</button>
+                <button class="btn">Спереди</button>
+                <button class="btn">Сзади</button>
+            </div>
+        </div>
+    </div>
+    <!-- /#characteristics-page.characteristics-page -->
 
 
 <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
