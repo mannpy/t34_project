@@ -1,3 +1,15 @@
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+        items:4,
+        loop:false,
+        center:false,
+        margin:100,
+        URLhashListener:true,
+        autoplayHoverPause:true,
+        startPosition: 'URLHash'
+    });
+  });
+
 // $(function(){
 
 // 	GeoPortal.on("ready",function() {

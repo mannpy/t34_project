@@ -1,0 +1,74 @@
+.history
+    
+    &-page
+        height: 100vh
+        position: relative
+        padding: 150px 137px
+
+        &__numbers
+            width: 300px
+
+    &-slider
+
+        &-head
+            width: 705px
+            margin-bottom: 50px
+            padding: 20px 52px 20px 141px
+            background-color: #282830
+            
+            &__links
+                display: flex
+                justify-content: space-between
+                align-items: center
+            
+            &__link
+                color: #5e5e5e
+                font-size: 18px
+                font-weight: 700
+
+                &.active
+                    color: #ffffff
+                    font-size: 24px
+        
+        &-block
+            position: relative
+            padding-top: 70px
+
+            &__year
+                top: 0
+                position: absolute
+                color: #dbdbdb
+                font-size: 48px
+                font-weight: 700
+
+            &__title
+                margin-bottom: 13px
+                color: #282830
+                font-size: 24px
+                font-weight: 700
+            
+            &__text
+                color: #7e7e7e
+                font-family: Muller
+                font-size: 12px
+                font-weight: 400
+            
+            &__img-block
+                width: 290px
+                margin-top: 25px
+                margin-left: auto
+                margin-right: auto
+
+        &__blocks       
+            .owl-item   
+                &:after
+                    content: ''
+                    display: block
+                    position: absolute
+                    height: 100%
+                    width: 2px
+                    top: 0
+                    right: -50px
+                    background-color: #d2d2d2
+
+    

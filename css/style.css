@@ -111,6 +111,8 @@ a {
 
 .menu__btn span:before, .menu__btn span:after {
   content: '';
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
 .menu__btn span:before {
@@ -251,7 +253,7 @@ a {
   margin-left: 42px;
 }
 
-.page1 {
+.main-page {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -265,43 +267,43 @@ a {
           justify-content: center;
   padding: 76px 0 112px 140px;
   height: 100vh;
-  background: no-repeat url(../img/page1/bg.jpg) center/cover;
+  background: no-repeat url(../img/main-page/bg.jpg) center/cover;
 }
 
-.page1-main {
+.main-page-main {
   margin-top: 134px;
   width: 560px;
 }
 
-.page1-main__title, .page1-main__subtitle {
+.main-page-main__title, .main-page-main__subtitle {
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.page1-main__title {
+.main-page-main__title {
   color: #282830;
   font-size: 54px;
 }
 
-.page1-main__subtitle {
+.main-page-main__subtitle {
   margin-bottom: 45px;
   color: #000000;
   font-family: Muller;
   font-size: 16px;
 }
 
-.page1-btn {
+.main-page-btn {
   position: absolute;
   bottom: 112px;
   width: 300px;
 }
 
-.page1-btn, .page1-btn__link {
+.main-page-btn, .main-page-btn__link {
   color: #282830;
   fill: #282830;
 }
 
-.page1-btn__link, .page1-btn__link__link {
+.main-page-btn__link, .main-page-btn__link__link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -310,23 +312,23 @@ a {
           align-items: center;
 }
 
-.page1-btn__icon, .page1-btn__link__icon {
+.main-page-btn__icon, .main-page-btn__link__icon {
   margin-right: 18px;
 }
 
-.page1-btn:hover, .page1-btn:hover .page1-btn__link, .page1-btn__link:hover, .page1-btn__link:hover .page1-btn__link, .page1-btn:hover .page1-btn__link__link, .page1-btn__link:hover .page1-btn__link__link {
+.main-page-btn:hover, .main-page-btn:hover .main-page-btn__link, .main-page-btn__link:hover, .main-page-btn__link:hover .main-page-btn__link, .main-page-btn:hover .main-page-btn__link__link, .main-page-btn__link:hover .main-page-btn__link__link {
   color: #565668;
   fill: #a4a4b3;
 }
 
-.page2 {
+.menu-page {
   height: 100vh;
   position: relative;
   background-color: #282830;
   color: #ffffff;
 }
 
-.page2-blocks {
+.menu-page-blocks {
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -334,7 +336,7 @@ a {
   display: flex;
 }
 
-.page2-blocks__block {
+.menu-page-blocks__block {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -352,19 +354,28 @@ a {
   transition: background-color 1s ease;
 }
 
-.page2-blocks__block:first-child {
+.menu-page-blocks__block:first-child {
   border-left: none;
 }
 
-.page2-blocks__block:last-child {
+.menu-page-blocks__block:last-child {
   border-right: none;
 }
 
-.page2-blocks__block:hover {
+.menu-page-blocks__block:hover {
   background-color: #36363d;
 }
 
-.page2-about {
+.menu-page-blocks__link {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.menu-page-blocks__link:hover {
+  color: #b3b3b3;
+}
+
+.menu-page-about {
   -webkit-box-flex: 1.5;
       -ms-flex: 1.5;
           flex: 1.5;
@@ -382,14 +393,14 @@ a {
   padding-left: 4%;
 }
 
-.page2-about__title {
+.menu-page-about__title {
   margin-bottom: 76px;
   font-size: 28px;
   font-weight: 700;
   position: relative;
 }
 
-.page2-about__title:after {
+.menu-page-about__title:after {
   top: 60px;
   position: absolute;
   content: '';
@@ -399,7 +410,7 @@ a {
   background-color: #fff;
 }
 
-.page2-about__text {
+.menu-page-about__text {
   max-width: 400px;
   margin-bottom: 100px;
   font-family: Muller;
@@ -408,33 +419,33 @@ a {
   color: #8a8a8a;
 }
 
-.page2-about__numbers {
+.menu-page-about__numbers {
   margin-bottom: 100px;
   width: 300px;
 }
 
-.page2-icons {
+.menu-page-icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.page2-icons__img:first-child {
+.menu-page-icons__img:first-child {
   margin-right: 34px;
 }
 
-.page3 {
+.map-page {
   height: 100vh;
   background-color: #282830;
   color: #ffffff;
   position: relative;
 }
 
-.page3__numbers {
+.map-page__numbers {
   width: 300px;
 }
 
-.page3__russia {
+.map-page__russia {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -448,33 +459,33 @@ a {
           align-items: center;
 }
 
-.page3__russia svg {
+.map-page__russia svg {
   width: 80%;
   height: 60%;
 }
 
-.page3__russia svg .place {
+.map-page__russia svg .place {
   fill: rgba(0, 0, 0, 0);
   stroke: rgba(255, 255, 255, 0.7);
 }
 
-.page3__russia svg .place:hover {
+.map-page__russia svg .place:hover {
   fill: #fff;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
 
-.page3__region {
+.map-page__region {
   position: absolute;
   bottom: 105px;
   left: 141px;
 }
 
-.page3__region .numbers {
+.map-page__region .numbers {
   width: 400px;
 }
 
-.page3-region__title {
+.map-page-region__title {
   margin-bottom: 48px;
   color: #ffffff;
   font-size: 36px;
@@ -482,7 +493,7 @@ a {
   position: relative;
 }
 
-.page3-region__title:after {
+.map-page-region__title:after {
   position: absolute;
   display: block;
   top: 56px;
@@ -492,19 +503,88 @@ a {
   background-color: #fff;
 }
 
-.page4 {
+.history-page {
   height: 100vh;
   position: relative;
-  padding-top: 152px;
+  padding: 150px 137px;
 }
 
-.page4__numbers {
+.history-page__numbers {
   width: 300px;
 }
 
-.page4-slider__head {
-  background-color: #282830;
-  padding: 27px 52px 29px 141px;
+.history-slider-head {
   width: 705px;
+  margin-bottom: 50px;
+  padding: 20px 52px 20px 141px;
+  background-color: #282830;
+}
+
+.history-slider-head__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.history-slider-head__link {
+  color: #5e5e5e;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.history-slider-head__link.active {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.history-slider-block {
+  position: relative;
+  padding-top: 70px;
+}
+
+.history-slider-block__year {
+  top: 0;
+  position: absolute;
+  color: #dbdbdb;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.history-slider-block__title {
+  margin-bottom: 13px;
+  color: #282830;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.history-slider-block__text {
+  color: #7e7e7e;
+  font-family: Muller;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.history-slider-block__img-block {
+  width: 290px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.history-slider__blocks .owl-item:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  top: 0;
+  right: -50px;
+  background-color: #d2d2d2;
 }
 /*# sourceMappingURL=style.css.map */
