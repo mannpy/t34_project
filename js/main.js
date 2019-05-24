@@ -1,4 +1,25 @@
 $(document).ready(function(){
+    // menu
+
+    var menuBtn = $(".menu__btn");
+    var menuTxt = $(".menu__text");
+    var menuPage = $("#menu-page");
+    var menuLink = $(".menu-page-blocks__link");
+
+    menuBtn.click(function() {
+      menuBtn.toggleClass('active');
+      menuPage.toggleClass('active');
+    })
+
+    menuTxt.click(function() {
+      menuBtn.toggleClass('active');
+      menuPage.toggleClass('active');
+    })
+
+    menuLink.click(function() {
+      menuBtn.toggleClass('active');
+      menuPage.toggleClass('active');
+    })
 
     // Carousel
     $(".owl-carousel").owlCarousel({
