@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    // Carousel
     $(".owl-carousel").owlCarousel({
         items:4,
         loop:false,
@@ -8,6 +10,32 @@ $(document).ready(function(){
         autoplayHoverPause:true,
         startPosition: 'URLHash'
     });
+
+    // Characteristics-page img change
+
+    $('.chars-view .btn').click(function () {
+      $('.chars-view .btn').removeClass('active');
+      $(this).toggleClass('active');
+      if ($(this).attr("id") == "chars-view__top") {
+        $(".chars-view__img").attr("src","../img/characteristic-page/tank-top.jpg");
+      }
+      if ($(this).attr("id") == "chars-view__left") {
+        $(".chars-view__img").attr("src","../img/characteristic-page/tank-left.png");
+      }
+      if ($(this).attr("id") == "chars-view__right") {
+        $(".chars-view__img").attr("src","../img/characteristic-page/tank-right.jpg");
+      }
+      if ($(this).attr("id") == "chars-view__front") {
+        $(".chars-view__img").attr("src","../img/characteristic-page/tank-front.jpg");
+      }
+      if ($(this).attr("id") == "chars-view__back") {
+        $(".chars-view__img").attr("src","../img/characteristic-page/tank-back.jpg");
+      }
+    });
+
+    // 
+
+    // Dedal map
 
     $(function() {
       var application;

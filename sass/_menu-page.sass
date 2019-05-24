@@ -1,8 +1,14 @@
 .menu-page
-    height: 100vh
     position: relative
+    height: 100vh
+    left: -100vw
+    display: none
     background-color: $active
     color: #ffffff
+
+    &.active
+        display: block
+        left: 0
 
     &-blocks
         height: 100%

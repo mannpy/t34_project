@@ -328,10 +328,17 @@ a {
 }
 
 .menu-page {
-  height: 100vh;
   position: relative;
+  height: 100vh;
+  left: -100vw;
+  display: none;
   background-color: #282830;
   color: #ffffff;
+}
+
+.menu-page.active {
+  display: block;
+  left: 0;
 }
 
 .menu-page-blocks {
