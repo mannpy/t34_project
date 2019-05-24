@@ -22,7 +22,9 @@ $(document).ready(function(){
     })
 
     // Carousel
-    $(".owl-carousel").owlCarousel({
+    var history = $('.history-carousel');
+
+    history.owlCarousel({
         items:4,
         loop:false,
         center:false,
@@ -31,6 +33,36 @@ $(document).ready(function(){
         autoplayHoverPause:true,
         startPosition: 'URLHash'
     });
+
+    history.on('mousewheel', '.owl-stage', function (e) {
+      if (e.deltaY>0) {
+          owl.trigger('next.owl');
+      } else {
+          owl.trigger('prev.owl');
+      }
+      e.preventDefault();
+    });
+
+    // more-info carousel
+
+    var moreInfoCars = $('.more-info-carousel');
+ 
+    moreInfoCars.owlCarousel({
+      items:1,
+      loop:true,
+      center:true,
+      autoplayHoverPause:true,
+    });
+
+    moreInfoCars.on('mousewheel', '.owl-stage', function (e) {
+      if (e.deltaY>0) {
+          owl.trigger('next.owl');
+      } else {
+          owl.trigger('prev.owl');
+      }
+      e.preventDefault();
+    });
+
 
     // Characteristics-page img change
 

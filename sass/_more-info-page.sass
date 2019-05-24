@@ -59,16 +59,53 @@
             padding-bottom: 15px
             border-top: 1px solid #cecece
             border-bottom: 1px solid #cecece
+            
     
-        .menu__btn.active
-            position: absolute
-            top: 70px
-            right: 68px
-            height: 33px
-            width: 33px
+    &__close-btn
+        cursor: pointer
 
-            span:after, span:before
-                background-color: #000000
+        position: absolute
+        top: 70px
+        right: 68px
+        height: 33px
+        width: 33px
+        span
+            top: 6px
+            
+            &, &:before, &:after
+                display: block
+                height: 2px
+                width: 100%
+                position: absolute
+                background-color: #000000       
+
+            &:before, &:after
+                content: ''
+                transition: all .2s
+
+            &:before
+                top: -6px
+            &:after
+                top: 6px
+        
+        &.active
+            span
+                background-color: transparent
+                &:before, &:after
+                    background-color: #000000
+                
+                &:before
+                    top: 0
+                    transform: rotate(-45deg)
+                
+                &:after
+                    top: 0
+                    transform: rotate(45deg)
+        
+        &_dark-bg
+            span
+                &, &:before, &:after
+                    background-color: #fff
 
 .descr
     &-field
