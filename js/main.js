@@ -72,9 +72,6 @@ $(document).ready(function(){
               console.log("Error to request authentication. Status = " + status + ". Error text: " + error);
             }
           );
-          
-          var lay = self.layersStore;
-          console.log(lay);
     
           self.mapObject.on("popupclose", removeMarker, this);
           

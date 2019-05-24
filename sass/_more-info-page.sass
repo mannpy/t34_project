@@ -2,6 +2,7 @@
     &-page
         display: flex
         height: 100vh
+        position: relative
 
     &__gallery
         flex-basis: 10%
@@ -30,9 +31,61 @@
     &__photo
         flex-basis: 60%
         overflow: hidden
-    
-    &__img
-        object-fit: cover
+        display: flex
+        align-items: center
     
     &__descr
         flex-basis: 30%
+    
+
+    &-descr
+        padding: 74px 70px 0 52px
+        color: #282830
+
+        &__title
+            margin-bottom: 15px
+            font-size: 36px
+            font-weight: 700
+        
+        &__place
+            margin-bottom: 30px
+            font-family: Muller
+            font-size: 18px
+            font-weight: 400
+        
+        &__fields
+            margin-bottom: 30px
+            padding-top: 30px
+            padding-bottom: 15px
+            border-top: 1px solid #cecece
+            border-bottom: 1px solid #cecece
+    
+        .menu__btn.active
+            position: absolute
+            top: 70px
+            right: 68px
+            height: 33px
+            width: 33px
+
+            span:after, span:before
+                background-color: #000000
+
+.descr
+    &-field
+        margin-bottom: 9px
+        font-family: Muller
+        font-size: 14px
+        font-weight: 700
+    
+    &-block
+        font-family: Muller
+        &__title
+            margin-bottom: 15px
+            font-size: 18px
+            font-weight: 700
+        
+        &__text
+            font-size: 14px
+            font-weight: 400
+
+
