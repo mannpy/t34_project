@@ -40,31 +40,33 @@
     
 
     &-descr
-        padding: 74px 70px 0 52px
+        padding: 50px 60px 0 40px
         color: #282830
 
         &__title
-            margin-bottom: 15px
+            margin-bottom: 10px
             font-size: 36px
             font-weight: 700
         
         &__place
-            margin-bottom: 30px
+            margin-bottom: 20px
             font-family: Muller
             font-size: 18px
             font-weight: 400
         
         &__fields
-            margin-bottom: 30px
+            margin-bottom: 20px
             padding-top: 30px
             padding-bottom: 15px
             border-top: 1px solid #cecece
             border-bottom: 1px solid #cecece
+
+            &.no-bottom-border
+                border-bottom: none
             
     
     &__close-btn
         cursor: pointer
-
         position: absolute
         top: 70px
         right: 68px
@@ -110,12 +112,27 @@
 
 .descr
     &-field
+        display: flex
         margin-bottom: 9px
         font-family: Muller
         font-size: 14px
         font-weight: 700
+
+        &__name
+            flex-basis: 40%
+            &_bigger
+                margin-right: 10px
+                flex-basis: 90%
+        
+        &__value
+            flex-basis: 60%
+            color: #919191
+            font-weight: 500
+            &_smaller
+                flex-basis: 10%
     
     &-block
+        margin-bottom: 30px
         font-family: Muller
         &__title
             margin-bottom: 15px

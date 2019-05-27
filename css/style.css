@@ -888,29 +888,33 @@ a {
 }
 
 .more-info-descr {
-  padding: 74px 70px 0 52px;
+  padding: 50px 60px 0 40px;
   color: #282830;
 }
 
 .more-info-descr__title {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 36px;
   font-weight: 700;
 }
 
 .more-info-descr__place {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: Muller;
   font-size: 18px;
   font-weight: 400;
 }
 
 .more-info-descr__fields {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding-top: 30px;
   padding-bottom: 15px;
   border-top: 1px solid #cecece;
   border-bottom: 1px solid #cecece;
+}
+
+.more-info-descr__fields.no-bottom-border {
+  border-bottom: none;
 }
 
 .more-info__close-btn {
@@ -973,13 +977,40 @@ a {
 }
 
 .descr-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 9px;
   font-family: Muller;
   font-size: 14px;
   font-weight: 700;
 }
 
+.descr-field__name {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+}
+
+.descr-field__name_bigger {
+  margin-right: 10px;
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+}
+
+.descr-field__value {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
+  color: #919191;
+  font-weight: 500;
+}
+
+.descr-field__value_smaller {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+}
+
 .descr-block {
+  margin-bottom: 30px;
   font-family: Muller;
 }
 

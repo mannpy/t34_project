@@ -45,8 +45,12 @@ $(document).ready(function(){
       items:1,
       loop:true,
       center:true,
+      nav:true,
       autoplayHoverPause:true,
     });
+
+    $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
+    $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
 
     var owl = $('.owl-carousel');
 
