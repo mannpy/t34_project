@@ -28,19 +28,13 @@ $(document).ready(function(){
         items:4,
         loop:false,
         center:false,
-        margin:100,
+        margin:80,
+        smartSpeed: 1000,
+        stagePadding: 80,
+        useMouseWheel: true,
         URLhashListener:true,
         autoplayHoverPause:true,
         startPosition: 'URLHash'
-    });
-
-    history.on('mousewheel', '.owl-stage', function (e) {
-      if (e.deltaY>0) {
-          owl.trigger('next.owl');
-      } else {
-          owl.trigger('prev.owl');
-      }
-      e.preventDefault();
     });
 
     // more-info carousel
@@ -54,13 +48,25 @@ $(document).ready(function(){
       autoplayHoverPause:true,
     });
 
-    moreInfoCars.on('mousewheel', '.owl-stage', function (e) {
-      if (e.deltaY>0) {
+    var owl = $('.owl-carousel');
+
+    owl.on('DOMMouseScroll','.owl-stage',function(e){
+      if (e.originalEvent.detail > 0){ 
           owl.trigger('next.owl');
-      } else {
+          } else {
           owl.trigger('prev.owl');
       }
       e.preventDefault();
+      });
+  
+    //Chrome, IE
+    owl.on('mousewheel','.owl-stage',function(e){
+        if (e.originalEvent.wheelDelta > 0){
+            owl.trigger('next.owl');
+            } else {
+                owl.trigger('prev.owl');
+        }
+        e.preventDefault();
     });
 
 
@@ -70,19 +76,19 @@ $(document).ready(function(){
       $('.chars-view .btn').removeClass('active');
       $(this).toggleClass('active');
       if ($(this).attr("id") == "chars-view__top") {
-        $(".chars-view__img").attr("src","../img/characteristic-page/tank-top.jpg");
+        $(".chars-view__img").attr("src","img/characteristic-page/tank-top.jpg");
       }
       if ($(this).attr("id") == "chars-view__left") {
-        $(".chars-view__img").attr("src","../img/characteristic-page/tank-left.png");
+        $(".chars-view__img").attr("src","img/characteristic-page/tank-left.png");
       }
       if ($(this).attr("id") == "chars-view__right") {
-        $(".chars-view__img").attr("src","../img/characteristic-page/tank-right.jpg");
+        $(".chars-view__img").attr("src","img/characteristic-page/tank-right.jpg");
       }
       if ($(this).attr("id") == "chars-view__front") {
-        $(".chars-view__img").attr("src","../img/characteristic-page/tank-front.jpg");
+        $(".chars-view__img").attr("src","img/characteristic-page/tank-front.jpg");
       }
       if ($(this).attr("id") == "chars-view__back") {
-        $(".chars-view__img").attr("src","../img/characteristic-page/tank-back.jpg");
+        $(".chars-view__img").attr("src","img/characteristic-page/tank-back.jpg");
       }
     });
 

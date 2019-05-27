@@ -334,11 +334,27 @@ a {
   z-index: 2;
   width: 100%;
   height: 100vh;
-  background-color: #282830;
+  background: url(../img/main-page/bg.jpg) no-repeat center/cover;
   color: #ffffff;
+  opacity: 0.4;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.menu-page:after {
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(40, 40, 48, 0.8);
+  position: absolute;
+  z-index: -1;
 }
 
 .menu-page.active {
+  opacity: 1;
   left: 0;
 }
 
@@ -376,8 +392,8 @@ a {
   border-right: none;
 }
 
-.menu-page-blocks__block:hover {
-  background-color: #36363d;
+.menu-page-blocks__block:not(:last-child):hover {
+  background-color: rgba(54, 54, 61, 0.7);
 }
 
 .menu-page-blocks__link {
@@ -442,10 +458,37 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 300px;
 }
 
-.menu-page-icons__img:first-child {
-  margin-right: 34px;
+.menu-page-icons__img {
+  position: relative;
+  margin-right: 23px;
+}
+
+.menu-page-icons__img:last-child {
+  margin-right: 0;
+}
+
+.menu-page-icons__img img {
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.menu-page-icons__img img.onhover {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.menu-page-icons__img img.onhover:hover {
+  opacity: 1;
 }
 
 .map-page {
@@ -517,10 +560,20 @@ a {
   background-color: #fff;
 }
 
+.map-page-icons {
+  position: absolute;
+  right: 138px;
+  bottom: 72px;
+}
+
 .history-page {
   height: 100vh;
   position: relative;
-  padding: 150px 137px;
+  padding: 150px 0px 150px 130px;
+}
+
+.history-page .owl-stage {
+  margin-left: -80px;
 }
 
 .history-page__numbers {
@@ -784,6 +837,7 @@ a {
   display: flex;
   height: 100vh;
   position: relative;
+  z-index: 10;
 }
 
 .more-info__gallery {
@@ -802,21 +856,18 @@ a {
 }
 
 .more-info__btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: absolute;
   bottom: 34px;
 }
 
 .more-info__btn .btn {
-  line-height: 1;
   font-family: Muller;
   font-size: 12px;
   font-weight: 400;
+}
+
+.more-info__btn .btn > img, .more-info__btn .btn > span {
+  vertical-align: middle;
 }
 
 .more-info__photo {

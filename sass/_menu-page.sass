@@ -5,10 +5,25 @@
     z-index: 2
     width: 100%
     height: 100vh
-    background-color: $active
+    background: url(../img/main-page/bg.jpg) no-repeat center / cover
     color: #ffffff
+    opacity: 0.4
+    transition: all 0.2s ease
+
+    &:after
+        content: ""
+        display: block
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-color: rgba($active,.8)
+        position: absolute
+        z-index: -1
+
 
     &.active
+        opacity: 1
         left: 0
 
     &-blocks
@@ -29,8 +44,8 @@
             &:last-child
                 border-right: none
             
-            &:hover
-                background-color: #36363d
+            &:not(:last-child):hover
+                background-color: rgba(#36363d, .7)
 
         &__link
             color: #fff
@@ -75,9 +90,31 @@
     
     &-icons
         display: flex
+        align-items: center
+        max-width: 300px
 
         &__img
-            &:first-child
-                margin-right: 34px
+            position: relative
+            margin-right: 23px
+
+            &:last-child
+                margin-right: 0
+
+            img
+                max-width: 100%
+                cursor: pointer
+
+                &.onhover
+                    opacity: 0
+                    position: absolute
+                    top: 0
+                    left: 0
+                    transition: all .5s ease
+
+                &.onhover:hover
+                    opacity: 1
+
+            
+                
             
     

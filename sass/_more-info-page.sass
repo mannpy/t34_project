@@ -3,6 +3,7 @@
         display: flex
         height: 100vh
         position: relative
+        z-index: 10
 
     &__gallery
         flex-basis: 10%
@@ -17,16 +18,16 @@
             margin-bottom: 20px
     
     &__btn
-        display: flex
-        align-items: center
         position: absolute
         bottom: 34px
 
         .btn
-            line-height: 1
             font-family: Muller
             font-size: 12px
             font-weight: 400
+
+            & > img, & > span
+                vertical-align: middle
     
     &__photo
         flex-basis: 60%
