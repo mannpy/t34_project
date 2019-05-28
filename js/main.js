@@ -1,4 +1,40 @@
 $(document).ready(function(){
+    // value increasing
+
+
+    function increase(element, toValue) {
+
+      $({numberValue: 0}).animate({numberValue: toValue}, {
+      
+        duration: 2000, // Продолжительность анимации, где 500 = 0,5 одной секунды, то есть 500 миллисекунд
+        easing: "easeOutCubic",
+        
+        step: function(val) {
+        
+          element.html(Math.ceil(val)); // Блок, где необходимо сделать анимацию
+          
+        }
+        
+      });
+    }
+
+    increase($("#number-signs"), 1524);
+    increase($("#number-photos"), 1256);
+    increase($("#number-members"), 155);
+
+
+    // smoot scrolling
+
+    $("a.main-page-btn__link").click(function() {
+      $("html, body").animate({
+         scrollTop: $($(this).attr("href")).offset().top + "px"
+      }, {
+         duration: 500,
+         easing: "swing"
+      });
+      return false;
+   });
+
     // menu
 
     var menuBtn = $(".menu__btn");
@@ -47,11 +83,9 @@ $(document).ready(function(){
       center:true,
       nav:true,
       autoplayHoverPause:true,
+      navClass: ['owl-prev', 'owl-next'],
+      navText: ['<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-left-arrow__img">','<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-right-arrow__img">']
     });
-
-    $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
-    $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
-
     var owl = $('.owl-carousel');
 
     owl.on('DOMMouseScroll','.owl-stage',function(e){

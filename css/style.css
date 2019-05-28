@@ -271,7 +271,6 @@ a {
 }
 
 .main-page-main {
-  margin-top: 134px;
   width: 560px;
 }
 
@@ -300,7 +299,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  bottom: 112px;
+  bottom: 30vh;
   width: 300px;
 }
 
@@ -309,7 +308,7 @@ a {
   fill: #282830;
 }
 
-.main-page-btn__link, .main-page-btn__link__link {
+.main-page-btn__link-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -318,11 +317,11 @@ a {
           align-items: center;
 }
 
-.main-page-btn__icon, .main-page-btn__link__icon {
+.main-page-btn__icon {
   margin-right: 18px;
 }
 
-.main-page-btn:hover, .main-page-btn:hover .main-page-btn__link, .main-page-btn__link:hover, .main-page-btn__link:hover .main-page-btn__link, .main-page-btn:hover .main-page-btn__link__link, .main-page-btn__link:hover .main-page-btn__link__link {
+.main-page-btn:hover, .main-page-btn:hover .main-page-btn__link {
   color: #565668;
   fill: #a4a4b3;
 }
@@ -838,6 +837,51 @@ a {
   height: 100vh;
   position: relative;
   z-index: 10;
+}
+
+.more-info-carousel .owl-dots {
+  display: none;
+}
+
+.more-info-carousel .owl-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.more-info-carousel .owl-prev, .more-info-carousel .owl-next {
+  height: 180px;
+  width: 90px;
+  position: absolute;
+  top: 50%;
+  background-color: rgba(40, 40, 48, 0.7) !important;
+  z-index: 1;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.more-info-carousel .owl-prev {
+  left: 0;
+  border-bottom-right-radius: 180px;
+  border-top-right-radius: 180px;
+}
+
+.more-info-carousel .owl-prev img {
+  -webkit-transform: rotate(180deg) translateX(50%);
+          transform: rotate(180deg) translateX(50%);
+}
+
+.more-info-carousel .owl-next {
+  right: 0;
+  border-bottom-left-radius: 180px;
+  border-top-left-radius: 180px;
+}
+
+.more-info-carousel .owl-next img {
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
 }
 
 .more-info__gallery {
