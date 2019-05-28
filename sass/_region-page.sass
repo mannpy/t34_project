@@ -29,9 +29,20 @@
     
     &__photos
         max-width: 370px
+        max-height: 76%
         display: flex
         flex-wrap: wrap
         justify-content: space-between
+        overflow-y: scroll
+        scrollbar-color: lighten(#282830, 7) #282830
+
+        &::-webkit-scrollbar-track
+            background-color: #282830
+
+        &::-webkit-scrollbar-thumb
+            background-color: lighten(#282830, 7)
+        
+
         
 
     &-block
