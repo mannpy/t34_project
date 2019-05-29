@@ -1,0 +1,75 @@
+.filmoteka
+    padding-bottom: 150px
+
+    &:after
+        z-index: 0
+        content: ""
+        display: block
+        position: fixed
+        width: 100%
+        height: 194px
+        bottom: 0
+        left: 0
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%)
+
+    &-page
+        height: 100vh
+        position: relative
+        padding: 170px 140px 0 140px
+
+        &__numbers
+            width: 300px
+    
+    &__header
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 165px
+        background-color: #fff
+
+
+    &__block
+        display: flex
+    
+    &__item
+        display: flex
+        padding: 42px 125px 38px 42px
+        flex-basis: 50%
+        color: #7e7e7e
+        font-family: Muller
+        font-size: 12px
+        font-weight: 400
+        min-height: 100%
+
+        &:hover
+            background-color: #efefef
+
+    &-item
+        &__poster
+            flex-basis: 20%
+            margin-right: 25px
+
+        &__descr
+            flex-basis: 80%
+    
+    &-descr
+        &__title
+            color: #282830
+            font-family: "NewBaskervilleC"
+            font-size: 24px
+            font-weight: 700
+            line-height: 36px
+
+        &__year
+            margin-bottom: 15px
+        
+        &__text
+            margin-bottom: 40px
+        
+        &__preview
+            max-width: 132px
+    
+    &-preview
+        &__img
+            max-width: 100%

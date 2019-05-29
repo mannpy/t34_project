@@ -1,13 +1,16 @@
 $size: 90px
 .more-info
     &-page
-        display: flex
+        display: none
         height: 100vh
         position: fixed
         top: 0
         left: 0
         width: 100%
         z-index: 10
+
+        &.active
+            display: flex
 
         // carousel nav buttons
     &-carousel

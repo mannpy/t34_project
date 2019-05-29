@@ -80,6 +80,20 @@ a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
 .menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -813,14 +827,6 @@ a {
   scrollbar-color: #383843 #282830;
 }
 
-.gallery__photos::-webkit-scrollbar-track {
-  background-color: #282830;
-}
-
-.gallery__photos::-webkit-scrollbar-thumb {
-  background-color: #383843;
-}
-
 .gallery-block {
   margin-bottom: 20px;
   width: 170px;
@@ -841,15 +847,19 @@ a {
 }
 
 .more-info-page {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
+}
+
+.more-info-page.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .more-info-carousel .owl-dots {
@@ -1080,6 +1090,101 @@ a {
 .descr-block__text {
   font-size: 14px;
   font-weight: 400;
+}
+
+.filmoteka {
+  padding-bottom: 150px;
+}
+
+.filmoteka:after {
+  z-index: 0;
+  content: "";
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 194px;
+  bottom: 0;
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#ffffff));
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
+
+.filmoteka-page {
+  height: 100vh;
+  position: relative;
+  padding: 170px 140px 0 140px;
+}
+
+.filmoteka-page__numbers {
+  width: 300px;
+}
+
+.filmoteka__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 165px;
+  background-color: #fff;
+}
+
+.filmoteka__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filmoteka__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 42px 125px 38px 42px;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  color: #7e7e7e;
+  font-family: Muller;
+  font-size: 12px;
+  font-weight: 400;
+  min-height: 100%;
+}
+
+.filmoteka__item:hover {
+  background-color: #efefef;
+}
+
+.filmoteka-item__poster {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  margin-right: 25px;
+}
+
+.filmoteka-item__descr {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+}
+
+.filmoteka-descr__title {
+  color: #282830;
+  font-family: "NewBaskervilleC";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.filmoteka-descr__year {
+  margin-bottom: 15px;
+}
+
+.filmoteka-descr__text {
+  margin-bottom: 40px;
+}
+
+.filmoteka-descr__preview {
+  max-width: 132px;
+}
+
+.filmoteka-preview__img {
+  max-width: 100%;
 }
 
 #map {

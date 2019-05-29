@@ -139,6 +139,7 @@
             <div class="menu-page-blocks__block"><a href="characteristics.html" class="menu-page-blocks__link">устройство</a></div>
             <div class="menu-page-blocks__block"><a href="history.html" class="menu-page-blocks__link">история</a></div>
             <div class="menu-page-blocks__block"><a href="index.html#map-page" class="menu-page-blocks__link">карта</a></div>
+            <div class="menu-page-blocks__block"><a href="filmoteka.html" class="menu-page-blocks__link">фильмотека</a></div>
             <div class="menu-page-blocks__block menu-page-about">
                 <div class="menu-page-about__title">О проекте</div>
                 <div class="menu-page-about__text"><p>Задача организации, в особенности же консультация
@@ -197,10 +198,20 @@
 <script src="js/jquery.fullPage.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script>
-   $('#fullpage').fullpage({
-    scrollingSpeed: 1000,
-    resize: true,
-   });
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+            scrollingSpeed: 1000,
+            resize: true,
+        });
+        if (window.location.hash == "#map-page") {
+            $("html, body").animate({
+                scrollTop: $("#map-page").offset().top + "px"
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+        }
+    });
 </script>
 <script src="js/main.js"></script>
 

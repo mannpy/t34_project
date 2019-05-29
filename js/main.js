@@ -86,6 +86,7 @@ $(document).ready(function(){
       navClass: ['owl-prev', 'owl-next'],
       navText: ['<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-left-arrow__img">','<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-right-arrow__img">']
     });
+
     var owl = $('.owl-carousel');
 
     owl.on('DOMMouseScroll','.owl-stage',function(e){
@@ -106,6 +107,18 @@ $(document).ready(function(){
         }
         e.preventDefault();
     });
+
+    // more-info popup
+    var photoBlocksButtons = $(".region__photo-block, .more-info__btn, .more-info__close-btn"),
+        moreInfoPage = $(".more-info-page"),
+        map = $(".region-map");
+
+        photoBlocksButtons.click(function() {
+          moreInfoPage.toggleClass('active');
+          map.css("display", map.css("display") === 'none' ? '' : 'none');
+        })
+
+
 
 
     // Characteristics-page img change
