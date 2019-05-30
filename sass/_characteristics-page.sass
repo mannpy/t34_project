@@ -2,9 +2,9 @@
     
     &-page
         display: flex
-        height: 100vh
         position: relative
         padding-top: 150px
+        min-height: 100vh
 
         &__numbers
             width: 300px
@@ -18,9 +18,8 @@
 
     &-panel
         flex-basis: 30%
-        display: flex
-        padding-left: 140px
-        padding-right: 90px
+        justify-content: flex-start
+        padding: 5vh 70px 1vh 140px
         color: #fff
         background-color: $active
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16)
@@ -28,9 +27,11 @@
         &__title
             position: relative
             margin-bottom: 60px
-            width: 300px
+            width: 400px
             font-size: 28px
             font-weight: 700
+            margin-left: auto
+            margin-right: auto
 
             &:after
                 content: ''
@@ -40,9 +41,13 @@
                 height: 4px
                 bottom: -30px
                 background-color: #fff
+    
+        &__fields
+            min-width: 400px
+            margin-left: auto
+            margin-right: auto
 
     &-field
-        min-width: 420px
         display: flex
         justify-content: space-between
         position: relative
@@ -55,6 +60,7 @@
         
         &__text
             font-weight: 400
+            text-align: right
 
         &:before
             content: ''

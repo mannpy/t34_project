@@ -671,9 +671,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100vh;
   position: relative;
   padding-top: 150px;
+  min-height: 100vh;
 }
 
 .characteristics-page__numbers {
@@ -696,11 +696,10 @@ a {
 .chars-panel {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 140px;
-  padding-right: 90px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 5vh 70px 1vh 140px;
   color: #fff;
   background-color: #282830;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
@@ -710,9 +709,11 @@ a {
 .chars-panel__title {
   position: relative;
   margin-bottom: 60px;
-  width: 300px;
+  width: 400px;
   font-size: 28px;
   font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .chars-panel__title:after {
@@ -725,8 +726,13 @@ a {
   background-color: #fff;
 }
 
+.chars-panel__fields {
+  min-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .chars-field {
-  min-width: 420px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -745,6 +751,7 @@ a {
 
 .chars-field__text {
   font-weight: 400;
+  text-align: right;
 }
 
 .chars-field:before {
@@ -952,6 +959,7 @@ a {
 .more-info__descr {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
+  overflow-y: auto;
 }
 
 .more-info-descr {
@@ -988,7 +996,7 @@ a {
   cursor: pointer;
   position: absolute;
   top: 3vh;
-  right: 1vw;
+  right: 2vw;
   height: 33px;
   width: 33px;
 }
