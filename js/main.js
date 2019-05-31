@@ -110,12 +110,9 @@ $(document).ready(function(){
 
     // more-info popup
     var photoBlocksButtons = $(".region__photo-block, .more-info__btn, .more-info__close-btn"),
-        moreInfoPage = $(".more-info-page"),
-        map = $(".region-map");
-
+        moreInfoPage = $(".more-info-page");
         photoBlocksButtons.click(function() {
           moreInfoPage.toggleClass('active');
-          map.css("display", map.css("display") === 'none' ? '' : 'none');
         })
 
 

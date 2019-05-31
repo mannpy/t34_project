@@ -11,9 +11,21 @@ $size: 90px
 
         &.active
             display: flex
+    
+        // owl-carousel
 
-        // carousel nav buttons
+        .owl-stage-outer, .owl-stage, .owl-item
+            height: 100%
+
+    // carousel nav buttons
     &-carousel
+        &__item
+            height: 100%
+
+            img
+                height: 100%
+                object-fit: fill
+
         .owl-dots
             display: none
         .owl-nav

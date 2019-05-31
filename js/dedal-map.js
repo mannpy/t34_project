@@ -1,228 +1,247 @@
+var mapApplication;
 $(document).ready(function(){
     // Dedal map
 
     $(function() {
-      var application;
+		GeoPortal.regionsStore = new GeoPortal.HashMap();
+		var i=0, len = GeoPortal.config.regions.length; 
+		for(i=0;i<len;i++){
+			var region = GeoPortal.config.regions[i],
+				bboxArr = region.bbox.split(","),
+				southWest = bboxArr[0].split(" "),
+				northEast = bboxArr[1].split(" ");
+			
+			region.bounds = {
+				southWest: {
+					lng: southWest[0],
+					lat: southWest[1]
+				},
+				northEast: {
+					lng: northEast[0],
+					lat: northEast[1]
+				}
+			};
+			var model = new GeoPortal.Model.Region(region);
+			GeoPortal.regionsStore.add(region.id, model);
+		}
+		GeoPortal.wfsDoubleSize = true;
+		
+		GeoPortal.on("ready",geoportalReady,this);
+		
+		function geoportalReady() {
+			mapApplication = new Application("-932516122", GeoPortal.regionsStore.get(35), 207);
+			mapApplication.initialization();
+		}
       
-      GeoPortal.on("ready",geoportalReady,this);
-      function geoportalReady() {
-        application = new Application("oleg", "1234567892222", "-932516122", 55.29006455319217, 36.617431640625, 10, [5]);
-        application.initialization();
-      }
-      
-      function Application(login, password, baseLayerId, lon, lat, zoom, turnedLayers) {
-        var self = this;
-        this.mapObject = null;
-        this.layersStore = new GeoPortal.HashMap();
-        this.marker = null;
-        this.clickLatLng = null;
-        this.featuresStore = null;
-        this.leftpanel = null;
-        this.featureWidget = null;
-        
-        this.initialization = function() {
-          var baseLayer = findBaseLayer(baseLayerId),
-            mapReady = function() {
-              self.mapObject.setZoom(zoom);
-              self.mapObject.setCenter(lon,lat);
-            };
-          this.mapObject = new GeoPortal.Map('map',{baseLayer: baseLayer}); 
-          this.mapObject.on("ready", mapReady, this)
-        
-          GeoPortal.authenticate(login, password,
-            function(data) {
-              GeoPortal.requestGroups(true,
-                function(groups) {
-                  var len = groups.length, i=0;
-                  for(i=0;i<len;i++) {
-                    drawGroup(groups[i]);
-                  } 
-                  
-                  $("#groups").find(".layer").find("input").on("click",function() {
-                    var id = $(this).val(),
-                    layer = self.layersStore.get(id);
-    
-                    if(typeof layer != 'undefined') {
-                      layer.turn(self.mapObject);
-                    }
-                  });
-                  
-                  var i=0, len = turnedLayers.length;
-                  for(i=0;i<len;i++) {
-                    $("#groups").find(".layer").find("input[value='"+turnedLayers[i]+"']").click();
-                  }
-                },
-                
-                function(status,error) {
-                  console.log("Error to request layers groups. Status = " + status + ". Error text: " + error);
-                }
-              );
-              controls();
-              
-            },
-            function(status,error){
-              console.log("Error to request authentication. Status = " + status + ". Error text: " + error);
-            }
-          );
-    
-          self.mapObject.on("popupclose", removeMarker, this);
-          
-          self.mapObject.on("click",function(e) {
-            self.clickLatLng = e.latlng;
-          }, this ); 
-          
-          self.mapObject.on("featureClicked",
-            function(data) {
-              self.mapObject.off("popupclose", removeMarker, self);
-              removeMarker();
-              self.mapObject.on("popupclose", removeMarker, self);
-              
-              if(self.leftpanel != null) {
-                self.leftpanel.destroy();
-                self.leftpanel = null;
-              }
-          
-              if (data.features == undefined) {
-                console.log("Request features error. Status = " + status + ". Error text: " + error);
-                return;
-              }
-              
-              if(data.features.lenght == 0) {
-                alert("В точке ничего не найдено!");
-                return;
-              }
-              
-              var i=0, len = data.features.length;
-              self.featuresStore = new GeoPortal.HashMap();
-              for(i=0;i<len;i++) {
-                var feature = data.features[i];
-                self.featuresStore.add(feature.id(), feature);
-              }
-              
-              if(self.featuresStore.getCount() == 1) {
-                var feature = data.features[0],
-                  layer = self.layersStore.get(feature.layerId());
-                if(layer._model.get("info").service == 'WFS'){
-                  self.featureWidget = new GeoPortal.Widget.WFSFeatures(null, {latLng: self.clickLatLng, application: self});
-                } else {
-                  self.featureWidget = new GeoPortal.Widget.WMSFeatures(null, {latLng: self.clickLatLng, application: self});
-                }
-              } else {
-                self.featureWidget = new GeoPortal.Widget.WMSFeatures(null, {latLng: self.clickLatLng, application: self});
-              }
-            }
-          );
-        
-        };
-        
-        function findBaseLayer(baseLayerId) {
-          var baseLayer = null,
-            i=0, len, layer;
-            
-          len = GeoPortal.baseLayers.schemas.length;
-          for(i=0;i<len;i++) {
-            layer = GeoPortal.baseLayers.schemas[i];
-            if(layer.id() == baseLayerId) {
-              baseLayer = layer;
-              break;
-            }
-          }
-          if(baseLayer == null) {
-            len = GeoPortal.baseLayers.spaces.length;
-            for(i=0;i<len;i++) {
-              layer = GeoPortal.baseLayers.spaces[i];
-              if(layer.id() == baseLayerId) {
-                baseLayer = layer;
-                break;
-              }
-            }
-          }
-          return baseLayer;
-        
-        };
-        
-        
-        function drawGroup(group) {
-          var GROUP_MARGIN_BOTTOM = 45,
-            GROUP_MARGIN_TOP = 10,
-            GROUP_PADDING = 15,
-            GROUP_BORDER = 2;
-      
-          if(typeof group == "undefined")
-            return;
-            
-          var groupsDiv = $("#groups"),
-            groupDiv, layersDiv, layers, key, layer;
-    
-          groupsDiv.append('<div class="group"><div class="title-group"><h3>'+ group.name() +'</h3></div><div class="layers"></div></div>');
-          groupDiv = groupsDiv.last();
-          layersDiv = groupDiv.find(".layers:last");
-          layers = group.layers();
-          
-          for(key in layers) {
-            layer = layers[key];
-            self.layersStore.add(layer.id(), layer);
-            layersDiv.append('<div class="layer"><input type="checkbox" class="checkbox-layer" value="'+ layer.id() +'">'+ layer.rusName() +'</div>');
-          }
-          
-          $("#groups").height($(window).height() - GROUP_MARGIN_BOTTOM - GROUP_MARGIN_TOP - (2 * GROUP_PADDING) - (2 * GROUP_BORDER));
-        };
-        
-        function controls() {
-          var distance = new GeoPortal.Control.Distance();
-          
-          distance.on("control:distance:enable", function(data) {
-            self.mapObject.off("popupclose",removeMarker,self);
-            removeMarker(); 
-          }, self);
-          
-          distance.on("control:distance:disable", function(data) {
-            self.mapObject.on("popupclose",removeMarker,self);
-          }, self);
-          
-          self.mapObject.addControl(distance);
-        }
-        
-        function removeMarker() {
-          if (self.marker != undefined) {
-            self.mapObject.removeLayer(self.marker);
-            self.marker = undefined;
-          }
-        }
-        
-      }
-        
-      function flashVersion() {
-        // Отдельно определяем Internet Explorer
-        var ua = navigator.userAgent.toLowerCase();
-        var isIE = (ua.indexOf("msie") != -1 && ua.indexOf("opera") == -1 && ua.indexOf("webtv") == -1);
-        // Стартовые переменные
-        var version = 0;
-        var newversion;
-        var lastVersion = 10; // c запасом
-        var i;
-        var plugin;
-    
-        if (isIE) { // browser == IE
-          try {
-            for (i = 3; i <= lastVersion; i++) {
-              if (eval('new ActiveXObject("ShockwaveFlash.ShockwaveFlash.'+i+'")')) {
-                version = i;
-              }
-            }
-          } catch(e) {}
-        } else { // browser != IE
-          for (i in navigator.plugins) {
-            plugin = navigator.plugins[i];
-            if (plugin.name == undefined) continue;
-            if (plugin.name.indexOf('Flash') > -1) {
-              newversion = /\d+/.exec(plugin.description);
-              if (newversion == null) newversion = 0;
-              if (newversion> version) version = newversion;
-            }
-          }
-        }
-        return version;
-      }
+		function Application(baseLayerId, region, turnedLayerId) {
+			//var self = this;
+
+			this.turnedLayerId = turnedLayerId;
+			this.region = region;
+			this.mapObject = null;
+			this.turnedLayer = null;
+			this.featuresStore = new GeoPortal.HashMap();
+			this.featureWidgetsStore = new GeoPortal.HashMap(); 
+
+
+			this.initialization = function() {
+				var baseLayer = findBaseLayer(baseLayerId),
+				mapReady = M.Util.bind(function() {
+					var bounds = region.get("bounds");
+					this.mapObject.fitBounds(new GeoPortal.LatLngBounds(
+						new M.LatLng(bounds.southWest.lat,bounds.southWest.lng),
+						new M.LatLng(bounds.northEast.lat,bounds.northEast.lng)
+					));
+				},this);
+				this.mapObject = new GeoPortal.Map('map',{baseLayer: baseLayer}); 
+				this.mapObject.on("ready", mapReady, this);
+				
+				$(".region-page__gallery").children(".gallery__title").text(this.region.get("name"));
+
+				GeoPortal.requestLayers (
+					M.Util.bind(function(layers) {
+						var len = layers.length, i=0;
+						for(i=0;i<len;i++) {
+							if(layers[i].id() == turnedLayerId) {
+								this.turnedLayer = layers[i];
+								break;
+							}
+						} 
+						if(this.turnedLayer != null) {
+							changeLayerFunc(this.turnedLayer)
+							this.turnedLayer.cqlFilter = encodeURIComponent("(sub_id IN ("+this.region.get("id")+"))")  
+							
+							this.turnedLayer.turn(this.mapObject);
+							
+							var bounds = region.get("bounds");
+								queryString = "layersid="+this.turnedLayer.id()+"&srs=EPSG:4326&southwestlng="+bounds.southWest.lng+"&southwestlat="+bounds.southWest.lat+"&northeastlng="+bounds.northEast.lng+"&northeastlat="+bounds.northEast.lat;
+							apiJsonGET(GeoPortal.basePath + "/layers/feature/bbox?"+queryString,{}, M.Util.bind(function(result){
+									if(typeof result.data == 'undefined' || Object.keys(result.data).length == 0) {
+										console.log("Error to request layers groups. Status = 404. Error text: Features are not found.");
+										return;
+									}
+									var keys = Object.keys(result.data),
+										layerFeatures = result.data[keys[0]],
+										features = layerFeatures.features,
+										i = 0, len = features.length;										
+										
+										
+									for(i=0;i<len;i++) {
+										if(features[i].sub_id == this.region.get("id")){
+											var fid = features[i].fid;
+											this.featuresStore.add(fid, features[i]);
+											var item = new GeoPortal.Widget.ListFeature($(".region-page__gallery").find(".region__photos"), {layerId:turnedLayerId, feature:this.featuresStore.get(fid)});
+											item.on("feature:click", this._featureClick, this);
+											this.featureWidgetsStore.add(fid, item);
+										}
+									}
+									var len = this.featuresStore.getCount(); 
+									countText = len+" "+caseWord(len, "памятный знак", "памятных знака", "памятных знака");
+									$(".region-page__gallery").children(".gallery__subtitle").text(countText);
+														
+								},this),
+								function(status,error) {
+									console.log("Error to request layers groups. Status = " + status + ". Error text: " + error);
+								}
+							);
+
+						} else {
+							console.log("Turned layer was not found");
+						}
+					},this),
+
+					function(status,error) {
+						onsole.log("Error to request layers groups. Status = " + status + ". Error text: " + error);
+					}
+				);
+				
+				this.mapObject.on("click",function(e) {
+					this.clickLatLng = e.latlng;
+				}, this ); 
+			
+				this.mapObject.on("featureClicked",
+					M.Util.bind(function(data) {
+						
+				
+						if (data.features == undefined) {
+							console.log("Request features error. Status = " + status + ". Error text: " + error);
+							return;
+						}
+						
+						if(data.features.lenght == 0) {
+							alert("В точке ничего не найдено!");
+							return;
+						}
+						var mapFeatureObj = data.features[0],
+							feature = this.featuresStore.get(mapFeatureObj.feature().fid);
+						
+						this._featureClick({feature: feature});
+					},this)
+				);
+				
+			};
+
+
+			this._featureClick = function(data) {
+				//var photoBlocksButtons = $(".region__photo-block, .more-info__btn, .more-info__close-btn")
+				var moreInfoPage = $(".more-info-page"),
+				map = $(".region-map");
+
+				this._fullInfoWidger = new GeoPortal.Widget.FeatureFullInfo(moreInfoPage, {feature: data.feature, application: this});
+				this._fullInfoWidger.on("fullinfo:close", this._fullInfoWidgerClose, this);
+				map.css("display", map.css("display") === 'none' ? '' : 'none');
+			}
+
+			this._fullInfoWidgerClose = function() {
+				this._fullInfoWidger.off("fullinfo:close", this._fullInfoWidgerClose, this);
+				this._fullInfoWidger = null;
+
+				var map = $(".region-map");
+				map.css("display", map.css("display") === 'none' ? '' : 'none');
+
+			}
+
+
+		}
+  
+		function changeLayerFunc(layer) {
+			layer._createMapLayer = function(map) {
+				var id = M.Util.stamp(map),
+					mapLayer;
+				if(this._layersForMaps.containsKey(id))
+					mapLayer = this._layersForMaps.get(id);
+				else{
+					var info = this._model.get("info"),
+						layerId = this.id(),
+						token = GeoPortal._accessToken != null ?  GeoPortal._accessToken : "";
+
+					if(info == null)
+						throw "Layer with id="+ layerId + " does not have an info attribute!";
+
+					if (GeoPortal.enums.layerServices.isWMS(info.service)){
+						mapLayer = new M.TileLayer.WMS(GeoPortal.basePath + info.requestUrl, {layers: info.typeName, styles: info.style, format: 'image/png', transparent: true, token: token});
+						if(this._filterCQL instanceof GeoPortal.Filter.CQL && mapLayer.wmsParams != undefined){
+							mapLayer.wmsParams.cql_filter = this._filterCQL.filterString();
+						}
+					}
+					else {
+						var wfsOptions = {};
+
+						if (GeoPortal.wfsDoubleSize && GeoPortal.wfsDoubleSize===true) {
+							wfsOptions.doubleSize = true;
+						}
+						if(this.cqlFilter != undefined) {
+							wfsOptions.cqlFilter = this.cqlFilter;
+						}
+						mapLayer = new GeoPortal.Layer.WFS(GeoPortal.basePath + info.requestUrl+"?token=" + token,info.typeName,GeoPortal.basePath + info.requestUrl.substring(0,info.requestUrl.length-3) + "styles/" + layerId + "/" + info.style+ ".sld?token=" + token,undefined,wfsOptions);
+					}
+					mapLayer.record = this;
+					this._layersForMaps.add(id,mapLayer);
+				}
+				return mapLayer;
+			};
+		}
+		  
+		function findBaseLayer(baseLayerId) {
+			var baseLayer = null,
+				i=0, len, layer;
+
+			len = GeoPortal.baseLayers.schemas.length;
+			for(i=0;i<len;i++) {
+				layer = GeoPortal.baseLayers.schemas[i];
+				if(layer.id() == baseLayerId) {
+					baseLayer = layer;
+					break;
+				}
+			}
+			if(baseLayer == null) {
+				len = GeoPortal.baseLayers.spaces.length;
+				for(i=0;i<len;i++) {
+					layer = GeoPortal.baseLayers.spaces[i];
+					if(layer.id() == baseLayerId) {
+						baseLayer = layer;
+						break;
+					}
+				}
+			}
+			return baseLayer;
+
+		};
+		
+		 function caseWord(number, case1, case2, case3) {
+			var base = number - Math.floor(number / 100) * 100,
+				result;
+			if (base > 9 && base < 20) {
+				result = case3;
+			} else {
+				var remainder = number - Math.floor(number / 10) * 10;
+
+				if (1 == remainder) result = case1;
+				else if (0 < remainder && 5 > remainder) result = case2;
+				else result = case3;
+			}
+
+			return result;
+		}
     });
-  });
+});

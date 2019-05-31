@@ -3,6 +3,7 @@
     background-color: $active
     color: #ffffff
     position: relative
+    z-index: 1
     
     &__numbers
         width: 300px
@@ -17,12 +18,13 @@
         svg
             width: 80%
             height: 60%
-            .place
-                fill: rgba(#000, 0)
-                stroke: rgba(255, 255, 255, 0.7)
-                &:hover
-                    fill: #fff
-                    transition: all ease 0.3s
+            g
+                path
+                    fill: rgba(#000, 0)
+                    stroke: rgba(255, 255, 255, 0.7)
+                    &:hover
+                        fill: #fff
+                        transition: all ease 0.3s
 
     &__region
         position: absolute
