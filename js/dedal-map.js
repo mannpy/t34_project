@@ -145,19 +145,19 @@ $(document).ready(function(){
 			this._featureClick = function(data) {
 				//var photoBlocksButtons = $(".region__photo-block, .more-info__btn, .more-info__close-btn")
 				var moreInfoPage = $(".more-info-page"),
-				map = $(".region-map");
+				mapWithFullPage = $("#fullpage, .region-map");
 
 				this._fullInfoWidger = new GeoPortal.Widget.FeatureFullInfo(moreInfoPage, {feature: data.feature, application: this});
 				this._fullInfoWidger.on("fullinfo:close", this._fullInfoWidgerClose, this);
-				map.css("display", map.css("display") === 'none' ? '' : 'none');
+				mapWithFullPage.css("display", mapWithFullPage.css("display") === 'none' ? '' : 'none');
 			}
 
 			this._fullInfoWidgerClose = function() {
 				this._fullInfoWidger.off("fullinfo:close", this._fullInfoWidgerClose, this);
 				this._fullInfoWidger = null;
 
-				var map = $(".region-map");
-				map.css("display", map.css("display") === 'none' ? '' : 'none');
+				var mapWithFullPage = $("#fullpage, .region-map");
+				mapWithFullPage.css("display", mapWithFullPage.css("display") === 'none' ? '' : 'none');
 
 			}
 

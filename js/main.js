@@ -109,11 +109,11 @@ $(document).ready(function(){
     });
 
     // more-info popup
-    var photoBlocksButtons = $(".region__photo-block, .more-info__btn, .more-info__close-btn"),
-        moreInfoPage = $(".more-info-page");
-        photoBlocksButtons.click(function() {
-          moreInfoPage.toggleClass('active');
-        })
+    var photoBlocksButtons = $(".region__photo-block, .more-info__close-btn"),
+      moreInfoPage = $(".more-info-page");
+    photoBlocksButtons.click(function() {
+      moreInfoPage.toggleClass('active');
+    })
 
 
 
