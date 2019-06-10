@@ -969,6 +969,10 @@ a {
   vertical-align: middle;
 }
 
+.more-info__btn .btn > span {
+  margin-left: 3px;
+}
+
 .more-info__photo {
   -ms-flex-preferred-size: 60%;
       flex-basis: 60%;
