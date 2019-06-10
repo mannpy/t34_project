@@ -284,10 +284,6 @@ a {
   background: no-repeat url(../img/main-page/bg.jpg) center/cover;
 }
 
-.main-page.hidden {
-  display: none;
-}
-
 .main-page-main {
   width: 560px;
 }
@@ -514,10 +510,6 @@ a {
   color: #ffffff;
   position: relative;
   z-index: 1;
-}
-
-.map-page.hidden {
-  display: none;
 }
 
 .map-page__numbers {

@@ -12,7 +12,8 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		this._createOwlCarousel = false;
 		
 		this._mainElement.addClass('active');
-		
+
+        // console.log(this._mainElement.find(".more-info__btn").length);
 		this._bind(this._mainElement.find(".more-info__btn"),"click",{me:this},function(event){
 			var me = event.data.me;
 			me._close();

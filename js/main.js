@@ -2,25 +2,9 @@ $(document).ready(function(){
     // value increasing
 
 
-    function increase(element, toValue) {
-
-      $({numberValue: 0}).animate({numberValue: toValue}, {
-      
-        duration: 2000, // Продолжительность анимации, где 500 = 0,5 одной секунды, то есть 500 миллисекунд
-        easing: "easeOutCubic",
-        
-        step: function(val) {
-        
-          element.html(Math.ceil(val)); // Блок, где необходимо сделать анимацию
-          
-        }
-        
-      });
-    }
-
-    increase($("#number-signs"), 1524);
-    increase($("#number-photos"), 1256);
-    increase($("#number-members"), 155);
+    increase($("#number-signs"), 87, 1000);
+    increase($("#number-photos"), 251, 1000);
+    increase($("#number-members"), 34, 1000);
 
 
     // smoot scrolling
@@ -45,17 +29,17 @@ $(document).ready(function(){
     menuBtn.click(function() {
       menuBtn.toggleClass('active');
       menuPage.toggleClass('active');
-    })
+    });
 
     menuTxt.click(function() {
       menuBtn.toggleClass('active');
       menuPage.toggleClass('active');
-    })
+    });
 
     menuLink.click(function() {
       menuBtn.toggleClass('active');
       menuPage.toggleClass('active');
-    })
+    });
 
     // Carousel
     var history = $('.history-carousel');
@@ -73,49 +57,9 @@ $(document).ready(function(){
         startPosition: 'URLHash'
     });
 
-    // more-info carousel
-
-    var moreInfoCars = $('.more-info-carousel');
- 
-    moreInfoCars.owlCarousel({
-      items:1,
-      loop:true,
-      center:true,
-      nav:true,
-      autoplayHoverPause:true,
-      navClass: ['owl-prev', 'owl-next'],
-      navText: ['<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-left-arrow__img">','<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-right-arrow__img">']
-    });
-
-    var owl = $('.owl-carousel');
-
-    owl.on('DOMMouseScroll','.owl-stage',function(e){
-      if (e.originalEvent.detail > 0){ 
-          owl.trigger('next.owl');
-          } else {
-          owl.trigger('prev.owl');
-      }
-      e.preventDefault();
-      });
-  
-    //Chrome, IE
-    owl.on('mousewheel','.owl-stage',function(e){
-        if (e.originalEvent.wheelDelta > 0){
-            owl.trigger('next.owl');
-            } else {
-                owl.trigger('prev.owl');
-        }
-        e.preventDefault();
-    });
-
-    // more-info popup
-    var photoBlocksButtons = $(".region__photo-block, .more-info__close-btn"),
-      moreInfoPage = $(".more-info-page");
-    photoBlocksButtons.click(function() {
-      moreInfoPage.toggleClass('active');
-    })
-
-
+    /*-------------------MAP---------------------------*/
+    // ALL SCRIPTS IN dedal-map.js
+    /*-------------------------------------------------*/
 
 
     // Characteristics-page img change
