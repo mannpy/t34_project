@@ -281,7 +281,7 @@ a {
       -ms-flex-pack: center;
           justify-content: center;
   padding-left: 140px;
-  background: no-repeat url(../img/main-page/bg.jpg) center/cover;
+  background: no-repeat url(../img/main-page/bg_c.jpg) center/cover;
 }
 
 .main-page-main {
@@ -888,8 +888,10 @@ a {
 
 .more-info-carousel__item img {
   height: 100%;
-  -o-object-fit: fill;
-     object-fit: fill;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: auto !important;
+  margin: 0 auto;
 }
 
 .more-info-carousel .owl-dots {
