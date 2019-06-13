@@ -267,6 +267,10 @@ a {
   margin-left: 42px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .main-page {
   position: relative;
   z-index: 1;
@@ -983,6 +987,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #1e1e24;
 }
 
 .more-info__descr {

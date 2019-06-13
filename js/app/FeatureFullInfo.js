@@ -29,8 +29,7 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		this._fullInfoBlock = this._mainElement.find(".more-info__descr");
 		this._photosBlock = this._mainElement.find(".more-info__photo");
 		this._featuresBlock = this._mainElement.find(".more-info__gallery");
-		
-		this._photosBlock.css("background-color","#1e1e24");
+	
 		
 		this._clean();
 		this._setFullInfo(this.options.feature);
