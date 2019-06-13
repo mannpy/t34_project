@@ -104,31 +104,34 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		  loop:true,
 		  center:true,
 		  nav:true,
-		  autoplayHoverPause:true,
+			autoplayHoverPause:true,
+			mouseDrag: false,
+			touchDrag: false,
+			pullDrag: false,
 		  navClass: ['owl-prev', 'owl-next'],
 		  navText: ['<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-left-arrow__img">','<img src="img/more-info/slider-arrow.svg" alt="arrow" class="slider-right-arrow__img">']
 		});
 
-		var owl = $('.owl-carousel');
+		// var owl = $('.owl-carousel');
 
-		owl.on('DOMMouseScroll','.owl-stage',function(e){
-		  if (e.originalEvent.detail > 0){ 
-			  owl.trigger('next.owl');
-			  } else {
-			  owl.trigger('prev.owl');
-		  }
-		  e.preventDefault();
-		  });
+		// owl.on('DOMMouseScroll','.owl-stage',function(e){
+		//   if (e.originalEvent.detail > 0){ 
+		// 	  owl.trigger('next.owl');
+		// 	  } else {
+		// 	  owl.trigger('prev.owl');
+		//   }
+		//   e.preventDefault();
+		//   });
 	  
-		//Chrome, IE
-		owl.on('mousewheel','.owl-stage',function(e){
-			if (e.originalEvent.wheelDelta > 0){
-				owl.trigger('next.owl');
-				} else {
-					owl.trigger('prev.owl');
-			}
-			e.preventDefault();
-		});
+		// //Chrome, IE
+		// owl.on('mousewheel','.owl-stage',function(e){
+		// 	if (e.originalEvent.wheelDelta > 0){
+		// 		owl.trigger('next.owl');
+		// 		} else {
+		// 			owl.trigger('prev.owl');
+		// 	}
+		// 	e.preventDefault();
+		// });
 	},
 	
 	_showFeatures: function() {
