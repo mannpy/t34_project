@@ -1002,6 +1002,14 @@ a {
   background-color: #1e1e24;
 }
 
+.more-info__photo-block.gallery-block.active .gallery-block__img {
+  border: 1px solid #151517;
+}
+
+.more-info__photo-block.gallery-block.active .gallery-block__name {
+  color: #c3c3c3;
+}
+
 .more-info__descr {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
