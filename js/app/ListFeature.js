@@ -1,15 +1,11 @@
 GeoPortal.Widget.ListFeature = GeoPortal.Widget.extend({
 	
-	options: {
-		application: null
-	},
-	
-    _createWidget: function(){
+	_createWidget: function(){
 
 		this._feature = this.options.feature;
 		this._layerId = this.options.layerId;
-		
-		this._elemBlock = $('<a class="region__photo-block gallery-block" href="#"/>').appendTo(this._mainElement);
+
+		this._elemBlock = $('<a class="'+this.options.aClassName+' gallery-block" href="#"/>').appendTo(this._mainElement);
 		this._elemBlock.append('<img src="img/region-page/ajax-loader.gif" alt="" class="ajax-loader"/>');
 		
 		this._loadEisFiles();
@@ -22,31 +18,46 @@ GeoPortal.Widget.ListFeature = GeoPortal.Widget.extend({
 		
 	},
 	
-	_loadEisFiles: function(){
-        this._loadEis = true;
+	_loadEisFiles: function() {
         this._firstEisElem = null;
-
         this.on("eisLoaded",this._showEisFile,this);
-        apiJsonGET(GeoPortal.basePath + "/layers/eis/"+this._layerId+"/"+this._feature.fid+"?random="+Math.random(),{},M.Util.bind(function(data){
-
-            if(data && data.files && data.files.length) {
-				this._feature.eisStore = data.files;
-				GeoPortal.fire("features:store:updated");
-                
-				var i,len = data.files.length;
+        if(this._feature.eisStoreLoaded) {
+        	if(this._feature.eisStore && this._feature.eisStore.length) {
+                var i,len = this._feature.eisStore.length;
                 for(i=0;i<len;i++){
-                    var file = data.files[i];
+                    var file = this._feature.eisStore[i];
                     if(file.type.name == 'photo' && this._firstEisElem == null){
                         this._firstEisElem = {
                             type: 'photo',
                             file: file
                         };
+                        break;
                     }
                 }
-            } 
-			this.fire("eisLoaded");
+            }
+            this.fire("eisLoaded");
+		}  else {
+            apiJsonGET(GeoPortal.basePath + "/layers/eis/"+this._layerId+"/"+this._feature.fid+"?random="+Math.random(),{},M.Util.bind(function(data){
+                this._feature.eisStoreLoaded = true;
+            	if(data && data.files && data.files.length) {
+                    this._feature.eisStore = data.files;
 
-        },this));
+                    var i,len = data.files.length;
+                    for(i=0;i<len;i++){
+                        var file = data.files[i];
+                        if(file.type.name == 'photo' && this._firstEisElem == null){
+                            this._firstEisElem = {
+                                type: 'photo',
+                                file: file
+                            };
+                            break;
+                        }
+                    }
+                }
+                this.fire("eisLoaded");
+
+            },this));
+        }
     },
 
     _showEisFile: function(){
@@ -74,7 +85,7 @@ GeoPortal.Widget.ListFeature = GeoPortal.Widget.extend({
 				});
 		} else {
 			this._elemBlock.find(".ajax-loader").remove();
-			this._elemBlock.append('<img src="img/region-page/Image_15.jpg" alt="" class="gallery-block__img"/>')
+			this._elemBlock.append('<img src="img/region-page/Image_15.jpg" alt="" class="gallery-block__img"/>');
 			this._elemBlock.append('<div class="gallery-block__name">'+this._feature.title+'</div>');
 		}
 			

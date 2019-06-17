@@ -1,6 +1,6 @@
-
 $(document).ready(function(){
     // Dedal map
+    var GPApplication;
 
     GeoPortal.regionsStore = new GeoPortal.HashMap();
 	var i=0, len = GeoPortal.config.regions.length;
@@ -26,19 +26,30 @@ $(document).ready(function(){
     GeoPortal.countObjects = 0;
     GeoPortal.countPhotos = 0;
     GeoPortal.countMembers = 0;
+
+    GeoPortal.russiaCountObjects = 0;
+    GeoPortal.russiaCountPhotos = 0;
+    GeoPortal.russiaCountMembers = 0;
+
     apiJsonGET(GeoPortal.basePath + "/modules/dedalT34/statistic",{},
 		function(data){
 
             if(data && data.length > 0) {
                 var i = 0, len = data.length;
                 for(i=0;i<len;i++) {
-					var subject = data[i],
-                        region = GeoPortal.regionsStore.get(subject.sub_id);
+					var subject = data[i];
 
-					if(region) {
-                        region.set("count_objects",subject.count_objects);
-                        region.set("count_photos",subject.count_photos);
-                        region.set("count_members",subject.count_members);
+					if(subject.sub_id != null) {
+					    var region = GeoPortal.regionsStore.get(subject.sub_id);
+                        if (region) {
+                            region.set("count_objects", subject.count_objects);
+                            region.set("count_photos", subject.count_photos);
+                            region.set("count_members", subject.count_members);
+                        }
+                        GeoPortal.russiaCountObjects = GeoPortal.russiaCountObjects + subject.count_objects;
+                        GeoPortal.russiaCountPhotos = GeoPortal.russiaCountPhotos + subject.count_photos;
+                        GeoPortal.russiaCountMembers = GeoPortal.russiaCountMembers + subject.count_members;
+
                     }
                     GeoPortal.countObjects = GeoPortal.countObjects + subject.count_objects;
                     GeoPortal.countPhotos = GeoPortal.countPhotos + subject.count_photos;
@@ -46,7 +57,7 @@ $(document).ready(function(){
                 }
 
                 setMainStatistic(GeoPortal.countObjects, GeoPortal.countPhotos, GeoPortal.countMembers);
-                updateStatistic("Россия", GeoPortal.countObjects, GeoPortal.countPhotos, GeoPortal.countMembers);
+                updateStatistic("Россия", GeoPortal.russiaCountObjects, GeoPortal.russiaCountPhotos, GeoPortal.russiaCountMembers);
 
 			}
         },
@@ -72,8 +83,6 @@ $(document).ready(function(){
         $(".main-page__numbers").children(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знака"));
         $(".main-page__numbers").children(".numbers__photos").children(".numbers__text").text(caseWord(countPhotos, "фотография", "фотографии", "фотографий"));
         $(".main-page__numbers").children(".numbers__members").children(".numbers__text").text(caseWord(countMembers, "участник", "участника", "участников"));
-
-
 
 
         $(".menu-page-about__numbers").find(".numbers__signs").children(".numbers__count").text(countObjects);
@@ -102,29 +111,43 @@ $(document).ready(function(){
 	GeoPortal.on("ready",geoportalReady,this);
 
 	function geoportalReady() {
-		var GPApplication = new GeoPortal.Application({
+		GPApplication = new GeoPortal.Application({
             mainLayerId: 207,
+            regionLayerId: 245,
             baseLayerId: "-932516122",
             defaultRegion: GeoPortal.regionsStore.get(0)
 		});
 
-        $("#map-page").find(".map-page__russia").children("#mapSvg").children("g").click(function () {
-            GPApplication.showFeatures($(this).attr("id"));
-        });
+        GPApplication.onApplicationLoaded(function () {
+            var $g = $("#map-page").find(".map-page__russia").children("#mapSvg").children("g");
+            $g.hover(function() {
+                var region = null;
+                if($(this).attr("id") != undefined) {
+                    region = GeoPortal.regionsStore.get($(this).attr("id"));
+                }
+                if(region != null) {
+                    updateStatistic(region.get("name"), region.get("count_objects"), region.get("count_photos"), region.get("count_members"));
+                } else {
+                    updateStatistic("Россия", GeoPortal.russiaCountObjects, GeoPortal.russiaCountPhotos, GeoPortal.russiaCountMembers);
+                }
+            }, function() {
+                updateStatistic("Россия", GeoPortal.russiaCountObjects, GeoPortal.russiaCountPhotos, GeoPortal.russiaCountMembers);
+            });
 
-        $("#map-page").find(".map-page__russia").children("#mapSvg").children("g").hover(function() {
-            var region = null;
-        	if($(this).attr("id") != undefined) {
-                region = GeoPortal.regionsStore.get($(this).attr("id"));
-            }
-            if(region != null) {
-                updateStatistic(region.get("name"), region.get("count_objects"), region.get("count_photos"), region.get("count_members"));
-        	} else {
-                updateStatistic("Россия", GeoPortal.countObjects, GeoPortal.countPhotos, GeoPortal.countMembers);
-			}
-        }, function() {
-            updateStatistic("Россия", GeoPortal.countObjects, GeoPortal.countPhotos, GeoPortal.countMembers);
-        });
+            $g.click(function () {
+                GPApplication.filterFeaturesByRegion($(this).attr("id"));
+            });
+
+            $(".header-info").find(".numbers__signs").click(function () {
+                GPApplication.filterFeaturesByRegion(0);
+            });
+            $(".map-page-region").find(".numbers__signs").click(function () {
+                GPApplication.filterFeaturesByRegion(0);
+            });
+            $(".map-page-region").find(".map-page-region__title").click(function () {
+                GPApplication.filterFeaturesByRegion(0);
+            });
+        }, this);
 	}
 
     $("#fullpage").find(".region-page-wrap").find(".more-info__btn").bind("click", function () {

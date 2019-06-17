@@ -6,14 +6,10 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 	
     _createWidget: function(){
 
-		this._feature = this.options.feature;
 		this._application = this.options.application;
-		
-		this._createOwlCarousel = false;
-		
+
 		this._mainElement.addClass('active');
 
-        // console.log(this._mainElement.find(".more-info__btn").length);
 		this._bind(this._mainElement.find(".more-info__btn"),"click",{me:this},function(event){
 			var me = event.data.me;
 			me._close();
@@ -29,11 +25,21 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		this._fullInfoBlock = this._mainElement.find(".more-info__descr");
 		this._photosBlock = this._mainElement.find(".more-info__photo");
 		this._featuresBlock = this._mainElement.find(".more-info__gallery");
-	
+		
+		if(this.options.region != null) {
+            this._mainElement.find(".gallery__title").text(this.options.region.get("name"));
+            this._mainElement.find(".gallery__subtitle").text("0 памятных знаков");
+            this._regionId = this.options.region.get("id");
+        } else {
+            this._regionId = -1;
+            this._mainElement.find(".gallery__title").text("");
+            this._mainElement.find(".gallery__subtitle").text("");
+        }
+
 		
 		this._clean();
 		this._setFullInfo(this.options.feature);
-		this._showPhotos(this.options.feature);
+		this._showEisFiles(this.options.feature);
 		this._showFeatures();
 		
 	},
@@ -58,23 +64,43 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".neobh_rabot").children(".descr-field__value").html(feature.neobh_rabot);
 	},
 	
-	_showPhotos: function(feature) {
-		var files = feature.eisStore;
-		if(files && files.length > 0) {
-			var i,len = files.length;
-			for(i=0;i<len;i++){
-				var file = files[i];
-				if(file.type.name == 'photo'){
-					this._appendPhoto(file);
-				}
-			}
-		} else {
-			var $div = $('<div class="more-info-carousel__item"/>').appendTo(this._photosBlock);
-			$div.append('<img src="img/more-info/Image_11.jpg" alt="Tank" class="more-info__img"/>');
+	_showEisFiles: function(feature) {
+        this.on("eisLoaded", this._onEisFilesLoaded, this);
+        if(feature.eisStoreLoaded) {
+            this.fire("eisLoaded", {feature: feature});
+        } else {
+            apiJsonGET(GeoPortal.basePath + "/layers/eis/"+this._application.options.mainLayerId+"/"+feature.fid+"?random="+Math.random(),{},M.Util.bind(function(data){
+                feature.eisStoreLoaded = true;
+                if(data && data.files && data.files.length) {
+                    feature.eisStore = data.files;
+
+                }
+                this.fire("eisLoaded", {feature: feature});
+            },this));
 		}
-		this._owlCarousel();
 		
 	},
+
+    _onEisFilesLoaded: function(data) {
+        this.off("eisLoaded", this._onEisFilesLoaded, this);
+
+        var files = data.feature.eisStore;
+        if (files && files.length > 0) {
+            var i, len = files.length;
+            for (i = 0; i < len; i++) {
+                var file = files[i];
+                if (file.type.name == 'photo') {
+                    this._appendPhoto(file);
+                } else if (file.type.name == 'page') {
+                    this._appendPage(file);
+                }
+            }
+        } else {
+            var $div = $('<div class="more-info-carousel__item"/>').appendTo(this._photosBlock);
+            $div.append('<img src="img/more-info/Image_11.jpg" alt="Tank" class="more-info__img"/>');
+        }
+        this._owlCarousel();
+    },
 	
 	_appendPhoto: function(file){
 		var url = file.url,
@@ -88,15 +114,26 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		$div.append('<img src="img/region-page/ajax-loader.gif" alt="" class="ajax-loader"/>');
 		
 		var image = $('<img src="'+fullUrl+'" alt="Tank" class="more-info__img"/>').appendTo($div);
-					
-		this._bind(image,"load",{me: this},function(event){
-			var me = event.data.me;
+
+        this._bind(image,"load",{},function(event){
 			$div.children(".ajax-loader").remove();
 		});
+
+        setTimeout(M.Util.bind(function () {
+            this._photosBlock.find(".ajax-loader").remove();
+        },this), 500);
 		
 	},
-	
-	_owlCarousel :function() {
+
+    _appendPage: function(file){
+        var url = file.url;
+
+        var $div = $('<div class="more-info-carousel__item"/>').prependTo(this._photosBlock);
+        $div.append('<iframe src="'+url+'" width="100%" height="100%"></iframe>');
+    },
+
+
+    _owlCarousel :function() {
 		var moreInfoCars = $('.more-info-carousel');
  
 		moreInfoCars.owlCarousel({
@@ -135,14 +172,46 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 	},
 	
 	_showFeatures: function() {
-		var featuresStore = this._application.featuresStore;
-		featuresStore.each(M.Util.bind(function(key, feature){
-			var fid = feature.fid;
-			var item = new GeoPortal.Widget.ListFeatureInfo(this._featuresBlock.find(".more-info__photos"), {layerId:this._application.turnedLayerId, feature:feature});
-			item.on("feature:click", this._featureClick, this);
-			
-			
-		},this));
+        if(this._regionId > -1) {
+            var len = 0,
+                featuresByRegionStore = this._application._featuresByRegionStore,
+                featuresStore = this._application._featuresStore;
+
+            if (this._regionId > 0) {
+                var featureIds = featuresByRegionStore.get(this._regionId);
+
+                len = featureIds ? featureIds.length : 0;
+                if (len > 0) {
+                    var i = 0,
+                        feature;
+                    for (i = 0; i < len; i++) {
+                        feature = featuresStore.get(featureIds[i]);
+                        if (feature) {
+                            var item = new GeoPortal.Widget.ListFeature(this._featuresBlock.find(".more-info__photos"), {
+                                layerId: this._application.options.mainLayerId,
+                                feature: feature,
+                                aClassName: "more-info__photo-block"
+                            });
+                            item.on("feature:click", this._featureClick, this);
+                        }
+                    }
+                }
+            } else {
+                len = featuresStore.getCount();
+                if (len > 0) {
+                    featuresStore.each(M.Util.bind(function (fid, feature) {
+                        var item = new GeoPortal.Widget.ListFeature(this._featuresBlock.find(".more-info__photos"), {
+                            layerId: this._application.options.mainLayerId,
+                            feature: feature,
+                            aClassName: "more-info__photo-block"
+                        });
+                        item.on("feature:click", this._featureClick, this);
+                    }, this))
+                }
+            }
+            var countText = len + " " + caseWord(len, "памятный знак", "памятных знака", "памятных знака");
+            this._mainElement.find(".gallery__subtitle").text(countText);
+        }
 	},
 	
 	_featureClick: function(data) {
@@ -150,7 +219,7 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		this._photosBlock.html('');
 		
 		this._setFullInfo(data.feature);
-		this._showPhotos(data.feature);
+		this._showEisFiles(data.feature);
 		
 	},
 	
