@@ -99,7 +99,7 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
             var $div = $('<div class="more-info-carousel__item"/>').appendTo(this._photosBlock);
             $div.append('<img src="img/more-info/Image_11.jpg" alt="Tank" class="more-info__img"/>');
         }
-        this._owlCarousel();
+		this._owlCarousel();
     },
 	
 	_appendPhoto: function(file){
@@ -116,12 +116,19 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		var image = $('<img src="'+fullUrl+'" alt="Tank" class="more-info__img"/>').appendTo($div);
 
         this._bind(image,"load",{},function(event){
+			// more-info page protrait image autosizing
+			$div.children(".more-info__img").each(function(){ //you need to put this inside the window.onload-function (not document.ready), otherwise the image dimensions won't be available yet
+				if ($(this).width()/$(this).height() < 1) {
+					$(this).addClass('portrait');
+				}
+			});
 			$div.children(".ajax-loader").remove();
 		});
 
         setTimeout(M.Util.bind(function () {
             this._photosBlock.find(".ajax-loader").remove();
-        },this), 500);
+		},this), 500);
+	
 		
 	},
 

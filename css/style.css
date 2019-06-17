@@ -540,6 +540,7 @@ a {
 }
 
 .map-page__russia svg g path {
+  cursor: pointer;
   fill: rgba(0, 0, 0, 0);
   stroke: rgba(255, 255, 255, 0.7);
 }
@@ -886,16 +887,25 @@ a {
   height: 100%;
 }
 
-.more-info-carousel__item {
+.more-info__img {
+  max-width: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.more-info__img.portrait {
+  width: auto !important;
   height: 100%;
 }
 
-.more-info-carousel__item img {
+.more-info-carousel__item {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: auto !important;
-  margin: 0 auto;
 }
 
 .more-info-carousel .owl-dots {

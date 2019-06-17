@@ -1,5 +1,6 @@
 $size: 90px
 .more-info
+
     &-page
         display: none
         height: 100vh
@@ -16,17 +17,26 @@ $size: 90px
 
         .owl-stage-outer, .owl-stage, .owl-item
             height: 100%
+    
+    &__img
+        max-width: 100%
+        object-fit: fill
+        margin: auto
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+
+        &.portrait
+            width: auto !important
+            height: 100%
+        
 
     // carousel nav buttons
     &-carousel
         &__item
             height: 100%
-
-            img
-                height: 100%
-                object-fit: cover
-                width: auto !important
-                margin: 0 auto
 
         .owl-dots
             display: none

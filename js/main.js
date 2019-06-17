@@ -1,7 +1,5 @@
 $(document).ready(function(){
     // value increasing
-
-
     increase($("#number-signs"), 87, 1000);
     increase($("#number-photos"), 251, 1000);
     increase($("#number-members"), 34, 1000);
