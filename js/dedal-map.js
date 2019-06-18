@@ -68,7 +68,7 @@ $(document).ready(function(){
 
     function setMainStatistic(countObjects, countPhotos, countMembers) {
         $(".header-info").find(".numbers__signs").children(".numbers__count").text(countObjects);
-        $(".header-info").find(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знака"));
+        $(".header-info").find(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знаков"));
 
         $(".header-info").find(".numbers__photos").children(".numbers__count").text(countPhotos);
         $(".header-info").find(".numbers__photos").children(".numbers__text").text(caseWord(countPhotos, "фотография", "фотографии", "фотографий"));
@@ -80,13 +80,13 @@ $(document).ready(function(){
         increase($("#number-photos"), countPhotos, 500);
         increase($("#number-members"), countMembers, 500);
 
-        $(".main-page__numbers").children(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знака"));
+        $(".main-page__numbers").children(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знаков"));
         $(".main-page__numbers").children(".numbers__photos").children(".numbers__text").text(caseWord(countPhotos, "фотография", "фотографии", "фотографий"));
         $(".main-page__numbers").children(".numbers__members").children(".numbers__text").text(caseWord(countMembers, "участник", "участника", "участников"));
 
 
         $(".menu-page-about__numbers").find(".numbers__signs").children(".numbers__count").text(countObjects);
-        $(".menu-page-about__numbers").find(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знака"));
+        $(".menu-page-about__numbers").find(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знаков"));
 
         $(".menu-page-about__numbers").find(".numbers__photos").children(".numbers__count").text(countPhotos);
         $(".menu-page-about__numbers").find(".numbers__photos").children(".numbers__text").text(caseWord(countPhotos, "фотография", "фотографии", "фотографий"));
@@ -100,7 +100,7 @@ $(document).ready(function(){
         $(".map-page-region").children(".map-page-region__title").text(regionName);
 
         $(".map-page-region__numbers").find(".numbers__signs").children(".numbers__count").text(countObjects);
-        $(".map-page-region__numbers").find(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знака"));
+        $(".map-page-region__numbers").find(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знаков"));
 
         $(".map-page-region__numbers").find(".numbers__photos").children(".numbers__count").text(countPhotos);
         $(".map-page-region__numbers").find(".numbers__photos").children(".numbers__text").text(caseWord(countPhotos, "фотография", "фотографии", "фотографий"));

@@ -12,7 +12,7 @@ GeoPortal.Widget.ListFeature = GeoPortal.Widget.extend({
 		
 		this._bind(this._elemBlock,"click",{me:this},function(event){
 			var me = event.data.me;
-			me.fire("feature:click",{feature: me._feature});
+			me.fire("feature:click",{feature: me._feature, element: me});
 		
 		});
 		
@@ -90,6 +90,15 @@ GeoPortal.Widget.ListFeature = GeoPortal.Widget.extend({
 		}
 			
         
+    },
+
+    active: function (bool) {
+        if(bool) {
+            this._elemBlock.addClass("active");
+            this._mainElement.scrollTop(this._mainElement.scrollTop() +  this._elemBlock.position().top);
+        } else {
+            this._elemBlock.removeClass("active");
+        }
     }
 
 

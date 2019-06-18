@@ -23,7 +23,7 @@ $(document).ready(function(){
                 increase($(".numbers__photos").children(".numbers__count"), countPhotos, 1000);
                 increase($(".numbers__members").children(".numbers__count"), countMembers, 1000);
 
-                $(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знака"));
+                $(".numbers__signs").children(".numbers__text").text(caseWord(countObjects, "памятный знак", "памятных знака", "памятных знаков"));
                 $(".numbers__photos").children(".numbers__text").text(caseWord(countPhotos, "фотография", "фотографии", "фотографий"));
                 $(".numbers__members").children(".numbers__text").text(caseWord(countMembers, "участник", "участника", "участников"));
             }

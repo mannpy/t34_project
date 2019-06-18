@@ -3,6 +3,8 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 	options: {
 		application: null
 	},
+
+	_featuresItems: [],
 	
     _createWidget: function(){
 
@@ -57,7 +59,11 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".teh_sost_tanka").children(".descr-field__value").html(feature.teh_sost_tanka);
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".nomer_tank").children(".descr-field__value").html(feature.nomer_tank);
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".zvd_proizv_tanka").children(".descr-field__value").html(feature.zvd_proizv_tanka);
-		this._fullInfoBlock.find(".descr-block__text").html(feature.ist_pam);
+		var text = feature.ist_pam;
+		if(feature.ist_ekipazh && feature.ist_ekipazh != "") {
+            text = text + "<br/><br/>" + feature.ist_ekipazh;
+		}
+		this._fullInfoBlock.find(".descr-block__text").html(text);
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".sost_dorog").children(".descr-field__value").html(feature.sost_dorog);
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".sost_territ").children(".descr-field__value").html(feature.sost_territ);
 		this._fullInfoBlock.find(".more-info-descr__fields").children(".sost_obj_new").children(".descr-field__value").html(feature.sost_obj_new);
@@ -194,12 +200,16 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
                     for (i = 0; i < len; i++) {
                         feature = featuresStore.get(featureIds[i]);
                         if (feature) {
-                            var item = new GeoPortal.Widget.ListFeature(this._featuresBlock.find(".more-info__photos"), {
+                        	var item = new GeoPortal.Widget.ListFeature(this._featuresBlock.find(".more-info__photos"), {
                                 layerId: this._application.options.mainLayerId,
                                 feature: feature,
                                 aClassName: "more-info__photo-block"
                             });
                             item.on("feature:click", this._featureClick, this);
+                            if(feature.fid == this.options.feature.fid) {
+                                item.active(true);
+                            }
+                            this._featuresItems.push(item);
                         }
                     }
                 }
@@ -213,10 +223,14 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
                             aClassName: "more-info__photo-block"
                         });
                         item.on("feature:click", this._featureClick, this);
+                        if(feature.fid == this.options.feature.fid) {
+                            item.active(true);
+                        }
+                        this._featuresItems.push(item);
                     }, this))
                 }
             }
-            var countText = len + " " + caseWord(len, "памятный знак", "памятных знака", "памятных знака");
+            var countText = len + " " + caseWord(len, "памятный знак", "памятных знака", "памятных знаков");
             this._mainElement.find(".gallery__subtitle").text(countText);
         }
 	},
@@ -227,7 +241,12 @@ GeoPortal.Widget.FeatureFullInfo = GeoPortal.Widget.extend({
 		
 		this._setFullInfo(data.feature);
 		this._showEisFiles(data.feature);
-		
+
+		var len = this._featuresItems.length, i=0;
+		for(i=0;i<len;i++) {
+            this._featuresItems[i].active(false);
+        }
+        data.element.active(true);
 	},
 	
 	_clean: function(){

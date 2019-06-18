@@ -185,7 +185,7 @@ GeoPortal.Application = M.Class.extend({
                 },this))
             }
         }
-        var countText = len+" " + caseWord(len, "памятный знак", "памятных знака", "памятных знака");
+        var countText = len+" " + caseWord(len, "памятный знак", "памятных знака", "памятных знаков");
         $(".region-page__gallery").children(".gallery__subtitle").text(countText);
     },
 
