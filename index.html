@@ -283,7 +283,10 @@
 <script src="js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 <script src="js/fancybox/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
 <script src="js/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
-<script src="http://t34.dedal.ru/public/javascripts/geoportal/geoportal-api.min.js" type="text/javascript"></script>
+
+<script src="js/main.js"></script>
+
+<script defer src="http://t34.dedal.ru/public/javascripts/geoportal/geoportal-api.min.js" type="text/javascript"></script>
 <script src="js/utils.js"></script>
 <script src="js/app/RegionsConfig.js" type="text/javascript"></script>
 <script src="js/app/HashMap.js" type="text/javascript"></script>
@@ -296,27 +299,25 @@
 <script src="js/dedal-map.js"></script>
 
 <script>
-    $(document).ready(function() {
-        var fullPage = $('#fullpage').fullpage({
-            scrollingSpeed: 1000,
-            resize: true,
-            onLeave: function(origin, destination, direction){
-                if(destination == 2 || destination == 1) {
-                    $("#fullpage").find(".region-page-wrap").hide();
-                }
+    var fullPage = $('#fullpage').fullpage({
+        scrollingSpeed: 1000,
+        resize: true,
+        onLeave: function(origin, destination, direction){
+            if(destination == 2 || destination == 1) {
+                $("#fullpage").find(".region-page-wrap").hide();
             }
-        });
-        if (window.location.hash == "#map-page") {
-            $("html, body").animate({
-                scrollTop: $("#map-page").offset().top + "px"
-            }, {
-                duration: 500,
-                easing: "swing"
-            });
         }
     });
+    if (window.location.hash == "#map-page") {
+        $("html, body").animate({
+            scrollTop: $("#map-page").offset().top + "px"
+        }, {
+            duration: 500,
+            easing: "swing"
+        });
+    }
 </script>
-<script src="js/main.js"></script>
+
 
 
 
