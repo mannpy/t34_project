@@ -2,7 +2,7 @@
     
     &-page
         display: flex
-        flex-wrap: wrap
+        flex-direction: column
         position: relative
         padding-top: 165px
         padding-left: 135px
@@ -17,7 +17,6 @@
     &-tabs
         display: flex
         align-items: center
-        flex-basis: 100%
         margin-bottom: 35px
 
         &__text
@@ -49,11 +48,17 @@
             font-size: 24px
             font-weight: 700
 
+    &__content
+        display: none
+
+        &.active
+            display: flex
+
     &-panel
         display: flex
         flex-direction: column
         flex-basis: 30%
-        max-width: 40%
+        max-width: 30%
         justify-content: flex-start
         padding: 5vh 70px 1vh 30px
         color: #fff
@@ -108,27 +113,43 @@
             top: 0
     
     &-view
-        flex-basis: 60%
-        max-width: 60%
-
-        &__content
-            display: none
-            padding-left: 50px
-            padding-right: 50px
-            flex-direction: column
-            justify-content: center
-            align-items: center
-            flex-wrap: wrap
-
-            &.active
-                display: flex
+        flex-basis: 70%
+        max-width: 70%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        padding-left: 50px
+        padding-right: 50px
+        padding-bottom: 50px
 
         &__img
-            width: 100%
+            max-width: 100%
 
             &-block
-                min-height: 480px
+                margin-left: auto
+                margin-right: auto
                 margin-bottom: 10px
         
         .btn
             margin-right: 15px
+        
+        &__btns
+            margin-bottom: 40px
+        
+        &__text
+            margin-top: 4px
+            margin-bottom: 4px
+
+            &-block
+                font-size: 14px
+                font-weight: 400
+                font-family: Muller, serif
+                color: #292929
+                text-indent: 2.5em
+                text-align: justify
+        &__fig
+
+            &-block
+                color: #292929
+                text-align: center

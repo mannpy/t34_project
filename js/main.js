@@ -43,7 +43,7 @@ $(document).ready(function(){
     var history = $('.history-carousel');
 
     history.owlCarousel({
-        items:4,
+        items:2,
         loop:false,
         center:false,
         margin:80,
