@@ -51,16 +51,37 @@
                 font-weight: 700
             
             &__text
+                text-align: justify
+                text-indent: 2em
                 color: #7e7e7e
                 font-family: Muller
                 font-size: 12px
                 font-weight: 400
             
             &__img-block
-                width: 290px
-                margin-top: 25px
+                width: 500px
+                margin-top: 10px
                 margin-left: auto
                 margin-right: auto
+                margin-bottom: 10px
+            
+            &__img
+                width: auto !important
+                max-width: 100%
+                margin: auto
+            
+            p
+                margin-top: 3px
+                margin-bottom: 3px
+            
+            &__ol
+                margin: 0 5px 0 4em
+                padding: 0
+                text-indent: 0
+
+                li
+                    margin-top: 0
+                    margin-bottom: 5px
 
         &__blocks       
             .owl-item   
@@ -73,6 +94,27 @@
                     top: 0
                     right: -50px
                     background-color: #d2d2d2
+
+.cyrilic
+    list-style-type: none
+    padding-left: 0
+    text-indent: 0
+
+    &__elem::before
+        margin-right: 10px
+        width: 1em
+        text-align: right
+        display: inline-block
+
+    &__elem:nth-child(1)::before
+        content: 'а)'
+    &__elem:nth-child(2)::before
+        content: 'б)'
+    &__elem:nth-child(3)::before 
+        content: 'в)'
+    &__elem:nth-child(4)::before 
+        content: 'г)'
+
 
 
     

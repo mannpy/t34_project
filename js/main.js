@@ -43,7 +43,7 @@ $(document).ready(function(){
     var history = $('.history-carousel');
 
     history.owlCarousel({
-        items:3,
+        items:2,
         loop:false,
         center:false,
         margin:80,
@@ -54,6 +54,14 @@ $(document).ready(function(){
         autoplayHoverPause:true,
         startPosition: 'URLHash'
     });
+
+    // history menu
+
+    $(".history-slider-head__link").click(function () {
+      $(".history-slider-head__link").removeClass('active');
+      $(this).addClass('active')
+      }
+    )
 
     /*-------------------MAP---------------------------*/
     // ALL SCRIPTS IN dedal-map.js

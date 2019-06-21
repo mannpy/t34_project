@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Muller";
   src: url("../fonts/MullerBold/MullerBold.eot");
@@ -458,6 +459,7 @@ a {
 }
 
 .menu-page-about__text {
+  text-align: justify;
   max-width: 400px;
   margin-bottom: 40px;
   font-family: Muller;
@@ -650,6 +652,8 @@ a {
 }
 
 .history-slider-block__text {
+  text-align: justify;
+  text-indent: 2em;
   color: #7e7e7e;
   font-family: Muller;
   font-size: 12px;
@@ -657,10 +661,33 @@ a {
 }
 
 .history-slider-block__img-block {
-  width: 290px;
-  margin-top: 25px;
+  width: 500px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.history-slider-block__img {
+  width: auto !important;
+  max-width: 100%;
+  margin: auto;
+}
+
+.history-slider-block p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.history-slider-block__ol {
+  margin: 0 5px 0 4em;
+  padding: 0;
+  text-indent: 0;
+}
+
+.history-slider-block__ol li {
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .history-slider__blocks .owl-item:after {
@@ -672,6 +699,35 @@ a {
   top: 0;
   right: -50px;
   background-color: #d2d2d2;
+}
+
+.cyrilic {
+  list-style-type: none;
+  padding-left: 0;
+  text-indent: 0;
+}
+
+.cyrilic__elem::before {
+  margin-right: 10px;
+  width: 1em;
+  text-align: right;
+  display: inline-block;
+}
+
+.cyrilic__elem:nth-child(1)::before {
+  content: 'а)';
+}
+
+.cyrilic__elem:nth-child(2)::before {
+  content: 'б)';
+}
+
+.cyrilic__elem:nth-child(3)::before {
+  content: 'в)';
+}
+
+.cyrilic__elem:nth-child(4)::before {
+  content: 'г)';
 }
 
 .characteristics-page {
