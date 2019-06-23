@@ -112,7 +112,7 @@ $(document).ready(function(){
 
 	function geoportalReady() {
 		GPApplication = new GeoPortal.Application({
-            mainLayerId: 207,
+            mainLayerId: 265,
             regionLayerId: 245,
             baseLayerId: "-932516122",
             defaultRegion: GeoPortal.regionsStore.get(0)
