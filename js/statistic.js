@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var basePath = "https://t34.dedal.ru/";
+    var basePath = "https://t34.dedal.ru";
     $.ajax({
         url: basePath + "/modules/dedalT34/statistic",
         type: "GET",
